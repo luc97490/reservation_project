@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Materiel {
+  id               Int                        @id @default(autoincrement())
+  nom              String
+  disponibilite    Boolean
+  caractId         Int
+  caract           CaractMateriel             @relation(fields: [caractId], references: [id])
+  reservationslong ReservationLongTerme[]
+  attribution      AttributionMaterielCourt[]
+}
+
+model CaractMateriel {
+  id        Int        @id @default(autoincrement())
+  type      String
+  modele    String?
+  materiels Materiel[]
+}
+
+model ReservationCourtTerme {
+  id          Int                        @id @default(autoincrement())
+  nom         String
+  prenom      String
+  email       String
+  objet       String
+  lieu        String
+  debut       DateTime
+  fin         DateTime
+  attribution AttributionMaterielCourt[]
+}
+
+model AttributionMaterielCourt {
+  court      ReservationCourtTerme @relation(fields: [courtId], references: [id])
+  courtId    Int
+  materiel   Materiel              @relation(fields: [materielId], references: [id])
+  materielId Int
+  assignedAt DateTime              @default(now())
+
+  @@id([courtId, materielId])
+}
+
+model ReservationLongTerme {
+  id              Int       @id @default(autoincrement())
+  materielId      Int
+  nom             String
+  prenom          String
+  dateAttribution DateTime
+  preparateur     String
+  rendu           Boolean
+  dateRendu       DateTime?
+  observation     String?
+  recuperateur    String?
+  materiel        Materiel  @relation(fields: [materielId], references: [id])
+}
