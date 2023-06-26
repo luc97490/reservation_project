@@ -11,24 +11,24 @@ datasource db {
 }
 
 model Materiel {
-  id               Int                        @id @default(autoincrement())
-  nom              String
-  disponibilite    Boolean
-  caractId         Int
-  caract           CaractMateriel             @relation(fields: [caractId], references: [id])
-  reservationslong ReservationLongTerme[]
-  attribution      AttributionMaterielCourt[]
+  id              Int                     @id @default(autoincrement())
+  nom             String
+  disponibilite   Boolean
+  specsId         Int
+  specs           Specifications          @relation(fields: [specsId], references: [id])
+  attributionlong AttributionPermanente[]
+  attribution     AttributionPonctuelle[]
 }
 
-model CaractMateriel {
+model Specifications {
   id        Int        @id @default(autoincrement())
   type      String
   modele    String?
   materiels Materiel[]
 }
 
-model ReservationCourtTerme {
-  id          Int                        @id @default(autoincrement())
+model ReservationPonctuelle {
+  id          Int                     @id @default(autoincrement())
   nom         String
   prenom      String
   email       String
@@ -36,20 +36,21 @@ model ReservationCourtTerme {
   lieu        String
   debut       DateTime
   fin         DateTime
-  attribution AttributionMaterielCourt[]
+  attribution AttributionPonctuelle[]
 }
 
-model AttributionMaterielCourt {
-  court      ReservationCourtTerme @relation(fields: [courtId], references: [id])
+model AttributionPonctuelle {
+  court      ReservationPonctuelle @relation(fields: [courtId], references: [id])
   courtId    Int
   materiel   Materiel              @relation(fields: [materielId], references: [id])
   materielId Int
   assignedAt DateTime              @default(now())
+  rendu      Boolean
 
   @@id([courtId, materielId])
 }
 
-model ReservationLongTerme {
+model AttributionPermanente {
   id              Int       @id @default(autoincrement())
   materielId      Int
   nom             String
