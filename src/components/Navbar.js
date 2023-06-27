@@ -6,27 +6,40 @@ export default function Navbar({ isButtonClicked }) {
     <nav
       className={`fixed top-0 left-0 z-40  ${mlNav} w-[fill-available] rounded-t-xl h-20 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}
     >
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-        <div></div>
+      <div className=" flex items-center justify-end gap-10 mx-auto p-4">
+        <div className="form-control md:order-2 w-80">
+          <input
+            type="text"
+            placeholder="Recherche"
+            className="input bg-primary-light dark:bg-primary-dark input-bordered "
+          />
+        </div>
         <div className="flex items-center md:order-2">
-          <label
-            tabIndex={0}
-            className="btn mx-12 rounded-full drop-shadow-2xl border-none bg-primary-light dark:bg-primary-dark btn-circle w-14 h-14 "
-          >
-            <Dropdown>
-              <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">
-                  bonnie@flowbite.com
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Item>Earnings</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>Sign out</Dropdown.Item>
-            </Dropdown>
-          </label>
+          <div className="dropdown dropdown-end">
+            <label
+              tabIndex={0}
+              className="btn mx-12 rounded-full drop-shadow-2xl border-none bg-primary-light dark:bg-primary-dark btn-circle w-14 h-14 "
+            >
+              RP
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 border border-border-light dark:border-border-dark shadow shadow-black menu menu-compact dropdown-content rounded-box w-52 bg-secondary-light dark:bg-secondary-dark"
+            >
+              <li>
+                <a>
+                  <img src="/asset/icons/key.svg" />
+                  Changer de code
+                </a>
+              </li>
+              <li>
+                <a>
+                  <img src="/asset/icons/out.svg" />
+                  Se déconnecter
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
