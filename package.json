@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^4.16.1",
+    "bcryptjs": "^2.4.3",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "flowbite": "^1.6.6",
     "flowbite-react": "^0.4.9",
     "next": "13.4.7",
-    "next-auth": "^4.22.1",
+    "next-auth": "^0.0.0-pr.6777.c5550344",
     "postcss": "^8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,6 @@ export default function RootLayout({ children }) {
           flex flex-row items-start p-1.5 gap-8 absolute w-7 h-7 z-50 ${mlButton} top-12`}
           onClick={handleButtonClick}
         >
-          {" "}
           <svg
             width="16"
             height="16"
@@ -51,7 +51,9 @@ export default function RootLayout({ children }) {
         <Navbar isButtonClicked={isButtonClicked} />
         <SideBar isButtonClicked={isButtonClicked} />
         <div className="scroll-container">
-          <div className={`content pt-20 ${mlContent}`}> {children}</div>
+          <div className={`content pt-20 ${mlContent}`}>
+            <SessionProvider>{children}</SessionProvider>
+          </div>
         </div>
       </body>
     </html>

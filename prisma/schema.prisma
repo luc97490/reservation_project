@@ -29,14 +29,13 @@ model Specifications {
 
 model ReservationPonctuelle {
   id          Int                     @id @default(autoincrement())
-  nom         String
-  prenom      String
-  email       String
   objet       String
   lieu        String
   debut       DateTime
   fin         DateTime
   attribution AttributionPonctuelle[]
+  User        User?                   @relation(fields: [userId], references: [id])
+  userId      Int?
 }
 
 model AttributionPonctuelle {
@@ -53,13 +52,30 @@ model AttributionPonctuelle {
 model AttributionPermanente {
   id              Int       @id @default(autoincrement())
   materielId      Int
-  nom             String
-  prenom          String
   dateAttribution DateTime
   preparateur     String
   rendu           Boolean
   dateRendu       DateTime?
   observation     String?
-  recuperateur    String?
+  userId          Int?
   materiel        Materiel  @relation(fields: [materielId], references: [id])
+  User            User?     @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  SuperAdmin
+  Admin
+  User
+}
+
+model User {
+  id                      Int                     @id @default(autoincrement())
+  firstName               String
+  lastName                String
+  email                   String                  @unique
+  role                    Role                    @default(User)
+  image                   String?
+  reservation             ReservationPonctuelle[]
+  permanente              AttributionPermanente[]
+  attributionPermanenteId Int
 }

@@ -1,19 +1,7 @@
 "use client";
 
-import { DarkThemeToggle, Flowbite, Sidebar } from "flowbite-react";
+import { DarkThemeToggle, Flowbite } from "flowbite-react";
 import Link from "next/link";
-import { useState } from "react";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-  HiViewBoards,
-  BiBuoy,
-} from "react-icons/hi";
-
 export default function SideBar({ isButtonClicked }) {
   const wSide = isButtonClicked ? "w-24" : "w-72";
   const centerIcon = isButtonClicked ? "justify-center" : "mx-7";
@@ -38,7 +26,7 @@ export default function SideBar({ isButtonClicked }) {
                     width="40"
                     height="40"
                   >
-                    <g clip-path="url(#a)">
+                    <g clipPath="url(#a)">
                       <path
                         d="m19 0-.6.2c-.9 0-1.9.4-2.7.9a9.5 9.5 0 0 0-4.8 6c-.2.7-.2.9-.2 2.3 0 1.5 0 1.6.2 2.3.4 1.7 1.2 3.1 2.5 4.3a9.3 9.3 0 0 0 8.9 2.5c3.4-.9 6-3.4 6.8-6.8.2-.7.2-.9.2-2.3a7 7 0 0 0-.2-2.3 9.5 9.5 0 0 0-10-7Zm5.4 6.3.8.8-3.2 3.1-3.2 3.2-1.8-1.8-1.8-1.8.9-.8.8-.8 1 1 .9.9L21 7.8l2.4-2.3.9.8Z"
                         fill="url(#b)"
@@ -66,11 +54,7 @@ export default function SideBar({ isButtonClicked }) {
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0" />
-                        <stop
-                          offset="1"
-                          stop-color="#8B8B8B"
-                          stop-opacity="0"
-                        />
+                        <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
                       </linearGradient>
                       <linearGradient
                         id="c"
@@ -81,11 +65,7 @@ export default function SideBar({ isButtonClicked }) {
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0" />
-                        <stop
-                          offset="1"
-                          stop-color="#8B8B8B"
-                          stop-opacity="0"
-                        />
+                        <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
                       </linearGradient>
                       <linearGradient
                         id="d"
@@ -96,11 +76,7 @@ export default function SideBar({ isButtonClicked }) {
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0" />
-                        <stop
-                          offset="1"
-                          stop-color="#8B8B8B"
-                          stop-opacity="0"
-                        />
+                        <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
                       </linearGradient>
                       <linearGradient
                         id="e"
@@ -111,11 +87,7 @@ export default function SideBar({ isButtonClicked }) {
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0" />
-                        <stop
-                          offset="1"
-                          stop-color="#8B8B8B"
-                          stop-opacity="0"
-                        />
+                        <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
                       </linearGradient>
                       <clipPath id="a">
                         <path fill="#fff" d="M0 0H40V40H0z" />
