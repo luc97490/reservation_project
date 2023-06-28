@@ -1,26 +1,5 @@
-import {
-  LoginButton,
-  LogoutButton,
-  ProfileButton,
-  RegisterButton,
-} from "@/components//Button";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
-  return (
-    <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "70vh",
-      }}
-    >
-      <div>
-        <LoginButton />
-        <RegisterButton />
-        <LogoutButton />
-        <ProfileButton />
-      </div>
-    </main>
-  );
+  return <div>OKOKOKOKOKOKKOKKOKOKO</div>;
 }
