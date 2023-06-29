@@ -15,7 +15,7 @@ export default function ButtonSidebar({ children }) {
   return (
     <div>
       <button
-        className={`box-border rounded-lg transition-all border border-border-light dark:border-border-dark bg-primary-light dark:bg-primary-dark 
+        className={`box-border rounded-lg  border border-border-light dark:border-border-dark bg-primary-light dark:bg-primary-dark 
   flex flex-row items-start p-1.5 gap-8 absolute w-7 h-7 z-50 ${mlButton} top-12`}
         onClick={handleButtonClick}
       >
@@ -39,7 +39,7 @@ export default function ButtonSidebar({ children }) {
       <Navbar isButtonClicked={isButtonClicked} />
       <SideBar isButtonClicked={isButtonClicked} />
       <div className="scroll-container">
-        <div className={`content pt-20 ${mlContent}`}>{children}</div>
+        <div className={`content pt-20  ${mlContent}`}>{children}</div>
       </div>
     </div>
   );
