@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "./Navbar";
-import SideBar from "./Sidebar";
+import Navbar from "./mainnav/Navbar";
+import SideBar from "./mainnav/Sidebar";
 import { useState } from "react";
 export default function ButtonSidebar({ children }) {
   const [isButtonClicked, setIsButtonClicked] = useState(false);

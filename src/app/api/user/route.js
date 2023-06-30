@@ -1,9 +1,9 @@
-import prisma from "../../../lib/db";
-import { NextResponse, NextRequest } from "next/server";
+import prisma from "@/lib/db";
+import { NextResponse } from "next/server";
 
 export async function POST(request) {
   const { id, email } = await request.json();
-  const role = "User";
+  let role = "User";
   if (email === process.env.SUPER_ADMIN) {
     role = "SuperAdmin";
   }

@@ -1,5 +1,5 @@
-import IsLoginIn from "./(NavBar)/IsLoginInButton";
-import Menu from "./(NavBar)/Menu";
+import IsLoginIn from "@/components/mainnav/navbar/IsLoginInButton";
+import Menu from "@/components/mainnav/navbar/Menu";
 export default function Navbar({ isButtonClicked }) {
   const mlNav = isButtonClicked ? "ml-24" : "ml-72";
   return (
