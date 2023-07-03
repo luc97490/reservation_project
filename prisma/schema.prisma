@@ -12,7 +12,7 @@ datasource db {
 
 model Materiel {
   id              String                  @id @default(uuid())
-  nom             String
+  nom             String                  @unique
   disponibilite   Boolean                 @default(false)
   specsId         String
   specs           Specification           @relation(fields: [specsId], references: [id])
@@ -40,40 +40,40 @@ model ReservationPonctuelle {
 }
 
 model AttributionPonctuelle {
-  court         ReservationPonctuelle @relation(fields: [courtId], references: [id])
-  courtId       String
+  id            String                @id @default(uuid())
+  reservation   ReservationPonctuelle @relation(fields: [reservationId], references: [id])
+  reservationId String
   materiel      Materiel              @relation(fields: [materielId], references: [id])
   materielId    String
-  dateattribuer DateTime              @default(now())
-  daterendu     DateTime?
+  dateAsign     DateTime              @default(now())
+  dateRendu     DateTime?
   rendu         Boolean               @default(false)
-
-  @@id([courtId, materielId])
 }
 
 model AttributionPermanente {
-  id              String    @id @default(uuid())
-  materielId      String
-  dateAttribution DateTime  @default(now())
-  preparateur     String
-  rendu           Boolean
-  dateRendu       DateTime?
-  observation     String?
-  userId          String?
-  materiel        Materiel  @relation(fields: [materielId], references: [id])
-  User            User?     @relation(fields: [userId], references: [id])
+  id          String    @id @default(uuid())
+  materielId  String
+  dateAsign   DateTime  @default(now())
+  preparateur String
+  rendu       Boolean   @default(false)
+  dateRendu   DateTime?
+  observation String?
+  userId      String
+  materiel    Materiel  @relation(fields: [materielId], references: [id])
+  User        User      @relation(fields: [userId], references: [id])
 }
 
 enum Role {
   SuperAdmin
   Admin
   User
+  Guest
 }
 
 model User {
   id          String                  @id
   email       String                  @unique
-  role        Role                    @default(User)
+  role        Role                    @default(Guest)
   reservation ReservationPonctuelle[]
   permanente  AttributionPermanente[]
 }

@@ -1,6 +1,6 @@
 import { currentUser } from "@clerk/nextjs";
 import prisma from "@/lib/db";
-export default async function POST() {
+export default async function Home() {
   const user = await currentUser();
 
   if (!user) return <div></div>;

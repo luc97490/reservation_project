@@ -5,7 +5,7 @@ export async function PUT(request) {
   try {
     const { id, nom, disponibilite, specsId } = await request.json();
 
-    const updatedMateriel = await prisma.materiesl.update({
+    const updatedMateriel = await prisma.materiel.update({
       where: { id },
       data: {
         nom,
