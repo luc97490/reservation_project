@@ -15,12 +15,12 @@ model Materiel {
   nom             String
   disponibilite   Boolean                 @default(false)
   specsId         String
-  specs           Specifications          @relation(fields: [specsId], references: [id])
+  specs           Specification           @relation(fields: [specsId], references: [id])
   attributionlong AttributionPermanente[]
   attribution     AttributionPonctuelle[]
 }
 
-model Specifications {
+model Specification {
   id        String     @id @default(uuid())
   type      String
   modele    String?

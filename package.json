@@ -1,5 +1,4 @@
 {
-  "froala:css:fix": "sed -i 's/fill-available/stretch/g' ./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
   "name": "reservation_project",
   "version": "0.1.0",
   "private": true,
