@@ -1,4 +1,5 @@
 import IsLoginIn from "@/components/mainnav/navbar/IsLoginInButton";
+import { DarkThemeToggle, Flowbite } from "flowbite-react";
 import Menu from "@/components/mainnav/navbar/Menu";
 export default function Navbar({ isButtonClicked }) {
   const mlNav = isButtonClicked ? "ml-24" : "ml-72";
@@ -8,6 +9,9 @@ export default function Navbar({ isButtonClicked }) {
     >
       <div className=" flex items-center justify-end gap-10 mx-auto p-4">
         <Menu />
+        <Flowbite>
+          <DarkThemeToggle />
+        </Flowbite>
         <div className="form-control w-80">
           <input
             type="text"

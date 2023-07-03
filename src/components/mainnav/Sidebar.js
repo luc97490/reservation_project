@@ -1,8 +1,8 @@
-"use client";
 
-import { DarkThemeToggle, Flowbite } from "flowbite-react";
 import Link from "next/link";
 import Logo from "./sidebar/Logo";
+import { IconAp, IconDemande, IconEnCours, IconHp, IconPortable, IconRallonge, IconRendu, IconVisio, IconVp, IconVr } from "./sidebar/Icons";
+
 export default function SideBar({ isButtonClicked }) {
   const wSide = isButtonClicked ? "w-24" : "w-72";
   const centerIcon = isButtonClicked ? "justify-center" : "mx-7";
@@ -14,10 +14,10 @@ export default function SideBar({ isButtonClicked }) {
     <>
       <aside
         id="logo-sidebar"
-        className={`fixed top-0  left-0 z-40 ${wSide}  h-screen rounded-2xl border bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+        className={`fixed top-0  left-0 z-40 ${wSide} overflow-hidden  h-screen rounded-2xl border bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
         aria-label="Sidebar"
       >
-        <div className={`h-full px-3 pb-4 overflow-y-auto `}>
+        <div className={`h-full px-3 pb-4 `}>
           <ul className="space-y-2 font-medium">
             <li>
               <Link href="/" className="w-full">
@@ -27,162 +27,163 @@ export default function SideBar({ isButtonClicked }) {
                 </div>
               </Link>
             </li>
+
+            {/* RESERVATION */}
+            <div className=" text-center">
+              <span className="text-xs pt-2 mx-auto text-text-light dark:text-text-dark">
+                RESERVATION
+              </span></div>
             <li>
               <Link
-                href="/demande"
+                href="/ponctuelle/demande"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                </svg>
+                <IconDemande />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Dashboard
+                  Demande
                 </span>
               </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/ponctuelle/encours"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                </svg>
+                <IconEnCours />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Kanban
+                  En cours
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/ponctuelle/rendu"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z" />
-                  <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
-                </svg>
+                <IconRendu />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Inbox
+                  Rendu
                 </span>
-              </a>
+              </Link>
             </li>
+
+            <div className="text-xs text-center mx-auto text-text-light dark:text-text-dark">
+              <span>PRÊT </span>
+              <span className={hiddenText}>À LONGUE DURÉE</span>
+            </div>
+            {/* PRET */}
             <li>
-              <a
-                href="#"
+              <Link
+                href="/permante/encours"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <IconEnCours />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Users
+                  En cours
                 </span>
-              </a>
+              </Link>
             </li>
+
             <li>
-              <a
-                href="#"
+              <Link
+                href="/permante/rendu"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <IconRendu />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Products
+                  Rendu
                 </span>
-              </a>
+              </Link>
             </li>
+
+            <div className=" text-center">
+              <span className="text-xs mx-auto text-text-light dark:text-text-dark">
+                MATERIELS
+              </span>
+            </div>
+            {/* MATERIELS */}
             <li>
-              <a
-                href="#"
+              <Link
+                href="/materiels/pc"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <IconPortable />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Sign In
+                  Portable
                 </span>
-              </a>
+              </Link>
             </li>
+
             <li>
-              <a
-                href="#"
+              <Link
+                href="/materiels/vp"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <IconVp />
                 <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
-                  Sign Up
+                  Vidéo Projecteur
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <Flowbite>
-                <DarkThemeToggle />
-              </Flowbite>
+              <Link
+                href="/materiels/hp"
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
+              >
+                <IconHp />
+                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                  Haut-parleur
+                </span>
+              </Link>
             </li>
+
+            <li>
+              <Link
+                href="/materiels/vr"
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
+              >
+                <IconVr />
+                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                  Casque VR
+                </span>
+              </Link>
+            </li><li>
+              <Link
+                href="/materiels/visio"
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
+              >
+                <IconVisio />
+                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                  Visioconférences
+                </span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/materiels/ap"
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
+              >
+                <IconAp />
+                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                  Appareil Photo
+                </span>
+              </Link>
+            </li><li>
+              <Link
+                href="/materiels/rallonge"
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
+              >
+                <IconRallonge />
+                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                  Rallonge
+                </span>
+              </Link>
+            </li>
+
+
+
+
           </ul>
         </div>
       </aside>

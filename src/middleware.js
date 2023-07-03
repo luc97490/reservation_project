@@ -22,7 +22,7 @@ export default authMiddleware({
       throw new Error("User not found.");
     } else {
       const response = await fetch(
-        "http://localhost:3000/api/user/createUser",
+        "http://localhost:3000/api/users/create",
         {
           method: "POST",
           headers: {
