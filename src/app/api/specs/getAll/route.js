@@ -3,7 +3,9 @@ import prisma from "@/lib/db";
 
 export async function GET() {
   try {
-    const specs = await prisma.specification.findMany();
+    const specs = await prisma.specification.findMany({
+      include: { materiels: true },
+    });
     return NextResponse.json({ specs });
   } catch (err) {
     console.error("Error fetching specs:", err);

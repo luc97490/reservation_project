@@ -1,7 +1,17 @@
-
 import Link from "next/link";
-import Logo from "./sidebar/Logo";
-import { IconAp, IconDemande, IconEnCours, IconHp, IconPortable, IconRallonge, IconRendu, IconVisio, IconVp, IconVr } from "./sidebar/Icons";
+import Logo from "../ui/Logo";
+import {
+  IconAp,
+  IconDemande,
+  IconEnCours,
+  IconHp,
+  IconPortable,
+  IconRallonge,
+  IconRendu,
+  IconVisio,
+  IconVp,
+  IconVr,
+} from "../ui/Icons";
 
 export default function SideBar({ isButtonClicked }) {
   const wSide = isButtonClicked ? "w-24" : "w-72";
@@ -32,14 +42,17 @@ export default function SideBar({ isButtonClicked }) {
             <div className=" text-center">
               <span className="text-xs pt-2 mx-auto text-text-light dark:text-text-dark">
                 RESERVATION
-              </span></div>
+              </span>
+            </div>
             <li>
               <Link
                 href="/ponctuelle/demande"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconDemande />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Demande
                 </span>
               </Link>
@@ -50,7 +63,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconEnCours />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   En cours
                 </span>
               </Link>
@@ -61,7 +76,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconRendu />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Rendu
                 </span>
               </Link>
@@ -78,7 +95,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconEnCours />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   En cours
                 </span>
               </Link>
@@ -90,7 +109,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconRendu />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Rendu
                 </span>
               </Link>
@@ -108,7 +129,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconPortable />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Portable
                 </span>
               </Link>
@@ -120,7 +143,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconVp />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Vidéo Projecteur
                 </span>
               </Link>
@@ -131,7 +156,9 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconHp />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Haut-parleur
                 </span>
               </Link>
@@ -143,17 +170,22 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconVr />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Casque VR
                 </span>
               </Link>
-            </li><li>
+            </li>
+            <li>
               <Link
                 href="/materiels/visio"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconVisio />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Visioconférences
                 </span>
               </Link>
@@ -165,25 +197,26 @@ export default function SideBar({ isButtonClicked }) {
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconAp />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Appareil Photo
                 </span>
               </Link>
-            </li><li>
+            </li>
+            <li>
               <Link
                 href="/materiels/rallonge"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <IconRallonge />
-                <span className={`flex-1 whitespace-nowrap ml-3 ${hiddenText}`}>
+                <span
+                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
+                >
                   Rallonge
                 </span>
               </Link>
             </li>
-
-
-
-
           </ul>
         </div>
       </aside>

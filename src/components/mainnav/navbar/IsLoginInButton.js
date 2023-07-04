@@ -23,7 +23,7 @@ export default function IsLoginInButton() {
       </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
-          <button className="btn">Se connecter</button>
+          <button className="btn normal-case">Se connecter</button>
         </SignInButton>
       </SignedOut>
     </>
