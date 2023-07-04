@@ -2,7 +2,7 @@ import React from "react";
 
 export default function DropdownFilter() {
   return (
-    <div className="dropdown">
+    <div className="dropdown dropdown-right">
       <div>
         <label
           tabIndex={0}
@@ -31,6 +31,9 @@ export default function DropdownFilter() {
         >
           <li>
             <a>Item 1</a>
+          </li>
+          <li>
+            <a>Item 2</a>
           </li>
           <li>
             <a>Item 2</a>

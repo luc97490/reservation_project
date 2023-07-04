@@ -23,6 +23,17 @@ export default function page() {
     fetchData();
   }, []);
 
+  const [inputs, setInputs] = useState([]);
+
+  const addInput = () => {
+    setInputs([...inputs, ''])
+  };
+  const handleInputChange = (index, event) => {
+    const newInputs = [...inputs];
+    newInputs[index] = event.target.value;
+    console.log(newInputs);
+    setInputs(newInputs);
+  };
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <div className="flex items-center justify-between px-2 py-4 bg-white dark:bg-gray-800">
@@ -38,7 +49,58 @@ export default function page() {
               placeholder="Search for users"
             />
           </div>
-          <button className="btn">+ Ajouter un modèle</button>
+          <label htmlFor="addmodele" className="btn">+ Ajouter Modèle</label>
+
+          {/* Put this part before </body> tag */}
+          <input type="checkbox" id="addmodele" className="modal-toggle" />
+          <div className="modal">
+            <div className="modal-box pb-1">
+              <label htmlFor="addmodele" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+              <h3 className="text-lg font-bold">Matériel</h3>
+              <div className=" flex justify-between mb-5">
+                <div className=" border-l-4 pl-2">
+                  <label htmlFor="modele" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modèle</label>
+                  <input type="text" id="modele" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Modèle" required />
+                </div>
+                <div>
+                  <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                  <select name="type" id="type" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="Ordinateur Portable">Ordinateur Portable</option>
+                    <option value="Vidéo Projecteur">Vidéo Projecteur</option>
+                    <option value="Haut-Parleur">Haut-Parleur</option>
+                    <option value="Casque VR" >Casque VR</option>
+                    <option value="Visioconférence">Visioconférence</option>
+                    <option value="Appareil Photo">Appareil Photo</option>
+                    <option value="Rallonge">Rallonge</option>
+                  </select>
+                </div>
+              </div>
+
+              {inputs.map((value, index) => (
+                <div className=" flex mt-2 ml-7 justify-between">
+
+                  <div className="border-l-4 pl-2" key={index}>
+                    <label htmlFor={index} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
+                    <input value={value} onChange={(event) => handleInputChange(index, event)} type="text" id={index} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nom" required />
+                  </div>
+                  <div>
+                    <label htmlFor="etat" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">État actuel</label>
+                    <select name="type" id="etat" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      <option value="Disponible">Disponible</option>
+                      <option value="En réparation">En réparation</option>
+                      <option value="Dégât modéré">Dégât modéré</option>
+                      <option value="Dégât important">Dégât important</option>
+                      <option value="Indisponible">Indisponible</option>
+                    </select>
+                  </div>
+                </div>
+              ))}
+
+              <span className="text-xs">Vous avez la possibilité d'associer directement le modèle aux noms des matériels </span>
+              <button className="w-full rounded-lg  text-xm mt-2 bg-gray-900 hover:bg-slate-200" onClick={addInput}>+</button>
+            </div>
+            <label className="modal-backdrop" htmlFor="addmodele">Close</label>
+          </div>
         </div>
       </div>
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
