@@ -2,7 +2,7 @@
 CREATE TABLE `Materiel` (
     `id` VARCHAR(191) NOT NULL,
     `nom` VARCHAR(191) NOT NULL,
-    `disponibilite` BOOLEAN NOT NULL DEFAULT false,
+    `etat` VARCHAR(191) NOT NULL,
     `specsId` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `Materiel_nom_key`(`nom`),

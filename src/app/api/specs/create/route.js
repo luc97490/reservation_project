@@ -4,7 +4,7 @@ import prisma from "@/lib/db";
 export async function POST(request) {
   try {
     const { type, modele } = await request.json();
-    if (!type || !modele) {
+    if (!type) {
       return NextResponse.error("Error json format");
     }
     const createdSpecsWithMateriel = await prisma.specification.create({
