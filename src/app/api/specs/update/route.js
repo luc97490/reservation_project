@@ -1,12 +1,14 @@
+import { NextResponse } from "next/server";
+
 export async function PUT(request) {
   try {
     const { id, type, modele } = await request.json();
-
-    const updatedSpecs = await prisma.specifications.update({
+    console.log(type);
+    const updatedSpecs = await prisma.specification.update({
       where: { id },
       data: {
-        type,
-        modele,
+        type: type,
+        modele: modele,
       },
     });
 

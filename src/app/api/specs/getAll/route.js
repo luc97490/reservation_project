@@ -4,7 +4,12 @@ import prisma from "@/lib/db";
 export async function GET() {
   try {
     const specs = await prisma.specification.findMany({
-      include: { materiels: true },
+      include: {
+        materiels: true,
+        _count: {
+          select: { materiels: true },
+        },
+      },
     });
     return NextResponse.json({ specs });
   } catch (err) {

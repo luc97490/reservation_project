@@ -13,7 +13,7 @@ datasource db {
 model Materiel {
   id              String                  @id @default(uuid())
   nom             String                  @unique
-  etat            String
+  etat            String                  @default("Disponible")
   specsId         String
   specs           Specification           @relation(fields: [specsId], references: [id])
   attributionlong AttributionPermanente[]
