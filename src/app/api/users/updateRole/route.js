@@ -1,10 +1,9 @@
 import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
 
-export async function PATCH(request) {
+export async function PUT(request) {
   try {
     const { id, role } = await request.json();
-
     // Valider les données de la requête
     if (!id || !role) {
       return NextResponse.error("Need user id and role ");

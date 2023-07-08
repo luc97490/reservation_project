@@ -8,11 +8,13 @@ import { useEffect, useState } from "react";
 import React from "react";
 
 export default function page() {
+  const [cancel, setCancel] = useState();
   const [specs, setSpecs] = useState([]);
   const [noms, setNoms] = useState([]);
   const [etats, setEtats] = useState([]);
-  const [modele, setModele] = useState([]);
-  const [type, setType] = useState([]);
+  const handleCancelClick = () => {
+    setCancel(true);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +26,8 @@ export default function page() {
       }
     };
     fetchData();
-  }, []);
+    setCancel(false);
+  }, [cancel]);
   function updateModele(data) {
     const id = data.get("id")?.valueOf();
     const type = data.get("type")?.valueOf();
@@ -49,7 +52,6 @@ export default function page() {
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
       });
-    redirect("/materiels");
   }
   function deleteModele(data) {
     const id = data.get("id")?.valueOf();
@@ -364,6 +366,7 @@ export default function page() {
                     <label
                       htmlFor={`update${spec.id}`}
                       className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                      onClick={handleCancelClick}
                     >
                       ✕
                     </label>
