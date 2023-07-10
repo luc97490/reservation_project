@@ -3,13 +3,13 @@ import prisma from "@/lib/db";
 
 export async function PUT(request) {
   try {
-    const { id, nom, disponibilite, specsId } = await request.json();
+    const { id, nom, etat, specsId } = await request.json();
 
     const updatedMateriel = await prisma.materiel.update({
       where: { id },
       data: {
         nom,
-        disponibilite,
+        etat,
         specsId,
       },
     });

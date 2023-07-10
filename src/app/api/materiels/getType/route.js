@@ -4,7 +4,7 @@ import prisma from "@/lib/db";
 export async function POST(request) {
   try {
     const { type } = await request.json();
-    console.log(type);
+
     const materiels = await prisma.materiel.findMany({
       where: { specs: { type } },
       include: { specs: true },

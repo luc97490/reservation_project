@@ -3,17 +3,15 @@ import DropdownFilter from "@/components/ui/DropdownFilter";
 import { IconSearch } from "@/components/ui/Icons";
 import axios from "axios";
 import { redirect } from "next/navigation";
-
 import { useEffect, useState } from "react";
-import React from "react";
 
 export default function page() {
-  const [cancel, setCancel] = useState();
+  const [refresh, setRefresh] = useState();
   const [specs, setSpecs] = useState([]);
   const [noms, setNoms] = useState([]);
   const [etats, setEtats] = useState([]);
   const handleCancelClick = () => {
-    setCancel(true);
+    setRefresh(true);
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +24,8 @@ export default function page() {
       }
     };
     fetchData();
-    setCancel(false);
-  }, [cancel]);
+    setRefresh(false);
+  }, [refresh]);
   function updateModele(data) {
     const id = data.get("id")?.valueOf();
     const type = data.get("type")?.valueOf();
@@ -47,7 +45,7 @@ export default function page() {
         modele: modele,
       })
       .then(async (response) => {
-        console.log(response);
+        setRefresh(true);
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
@@ -59,12 +57,11 @@ export default function page() {
     axios
       .post("/api/specs/delete", { id: id })
       .then(async (response) => {
-        console.log(response);
+        setRefresh(true);
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
       });
-    redirect("/materiels");
   }
 
   const addInput = () => {
@@ -99,12 +96,11 @@ export default function page() {
         materiels: materiels,
       })
       .then(async (response) => {
-        console.log(response);
+        setRefresh(true);
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
       });
-    redirect("/materiels");
   }
   const handleModeleChange = (event, specId) => {
     const updatedSpecs = specs.map((spec) =>
@@ -159,7 +155,7 @@ export default function page() {
                 ✕
               </label>
               <h3 className="text-lg font-bold">Matériel</h3>
-              <form action={OrderJson} className="text-end">
+              <form action={OrderJson}>
                 <div className=" flex justify-between mb-5">
                   <div className=" border-l-4 pl-2">
                     <label
@@ -237,10 +233,18 @@ export default function page() {
                           L'état du matériel?
                         </option>
                         <option value="Disponible">Disponible</option>
+                        <option value="En réservation">En réservation</option>
+                        <option value="En prêt">En prêt</option>
                         <option value="En réparation">En réparation</option>
                         <option value="Dégât modéré">Dégât modéré</option>
                         <option value="Dégât important">Dégât important</option>
                         <option value="Indisponible">Indisponible</option>
+                        <option value="Hors service">Hors service</option>
+                        <option value="Retiré du service">
+                          Retiré du service
+                        </option>
+                        <option value="Introuvable">Introuvable</option>
+                        <option value="Volé">Volé</option>
                       </select>
                     </div>
                   </div>

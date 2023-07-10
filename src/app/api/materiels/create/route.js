@@ -3,13 +3,14 @@ import prisma from "@/lib/db";
 
 export async function POST(request) {
   try {
-    const { nom, specsId } = await request.json();
+    const { nom, etat, specsId } = await request.json();
     if (!nom || !specsId) {
       return NextResponse.error("Invalid request");
     }
-    const createdMateriel = await prisma.materiels.create({
+    const createdMateriel = await prisma.materiel.create({
       data: {
         nom,
+        etat,
         specs: { connect: { id: specsId } },
       },
     });

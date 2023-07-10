@@ -1,6 +1,6 @@
 import { SignIn } from "@clerk/nextjs";
 
-export default function Page() {
+export default function SignIn() {
   return (
     <div className="flex mt-4 justify-center">
       <SignIn
