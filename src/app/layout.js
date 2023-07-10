@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider localization={frFR}>
       <html lang="fr">
         <body
-          className={`${inter.className}  bg-gradient-to-r from-cyan-500 to-blue-500 dark:from-black dark:to-white`}
+          className={`${inter.className}  bg-gradient-to-r from-cyan-500 to-blue-500 dark:from-black dark:to-black`}
         >
           <MainNavigation>{children}</MainNavigation>
         </body>
