@@ -2,6 +2,7 @@ import Link from "next/link";
 import Logo from "../ui/Logo";
 import {
   IconAp,
+  IconCasque,
   IconDemande,
   IconEnCours,
   IconHp,
@@ -49,7 +50,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/ponctuelle/demande"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconDemande />
+                <span className=" w-5 h-5">
+                  <IconDemande />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -62,7 +65,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/ponctuelle/encours"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconEnCours />
+                <span className=" w-5 h-5">
+                  <IconEnCours />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -75,7 +80,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/ponctuelle/rendu"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconRendu />
+                <span className=" w-5 h-5">
+                  <IconRendu />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -94,7 +101,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/permante/encours"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconEnCours />
+                <span className=" w-5 h-5">
+                  <IconEnCours />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -108,7 +117,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/permante/rendu"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconRendu />
+                <span className=" w-5 h-5">
+                  <IconRendu />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -128,7 +139,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/materiels/pc"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconPortable />
+                <span className=" w-5 h-5">
+                  <IconPortable />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -142,7 +155,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/materiels/vp"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconVp />
+                <span className=" w-5 h-5">
+                  <IconVp />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -155,7 +170,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/materiels/hp"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconHp />
+                <span className=" w-5 h-5">
+                  <IconHp />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -169,7 +186,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/materiels/vr"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconVr />
+                <span className=" w-5 h-5">
+                  <IconVr />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -182,7 +201,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/materiels/visio"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconVisio />
+                <span className=" w-5 h-5">
+                  <IconVisio />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -196,7 +217,9 @@ export default function SideBar({ isButtonClicked }) {
                 href="/materiels/ap"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconAp />
+                <span className=" w-5 h-5">
+                  <IconAp />{" "}
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
@@ -206,14 +229,16 @@ export default function SideBar({ isButtonClicked }) {
             </li>
             <li>
               <Link
-                href="/materiels/rallonge"
+                href="/materiels/casque"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
-                <IconRallonge />
+                <span className=" w-5 h-5">
+                  <IconCasque />
+                </span>
                 <span
                   className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
                 >
-                  Rallonge
+                  Casque Audio
                 </span>
               </Link>
             </li>
