@@ -3,36 +3,24 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { id, email } = await request.json();
+    const { email } = await request.json();
 
     // Validation des données d'entrée
-    if (!id || !email) {
+    if (!email) {
       return NextResponse.error("Invalid request");
     }
-
     const userExists = await prisma.user.findFirst({
-      where: { id: id },
+      where: { email },
       take: 1,
     });
-
     if (!userExists) {
-      let role = "User";
-
-      // Vérification d'un utilisateur super administrateur
-      if (email === process.env.SUPER_ADMIN) {
-        role = "SuperAdmin";
-      }
-
-      // Création sécurisée de l'utilisateur
-      await prisma.user.create({
+      const user = await prisma.user.create({
         data: {
-          id: id,
           email: email,
-          role: role,
         },
       });
 
-      return NextResponse.json({});
+      return NextResponse.json({ user });
     }
 
     return NextResponse.error("User already exists");

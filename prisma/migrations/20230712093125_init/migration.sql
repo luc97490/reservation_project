@@ -2,7 +2,7 @@
 CREATE TABLE `Materiel` (
     `id` VARCHAR(191) NOT NULL,
     `nom` VARCHAR(191) NOT NULL,
-    `etat` VARCHAR(191) NOT NULL,
+    `etat` VARCHAR(191) NOT NULL DEFAULT 'Disponible',
     `specsId` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `Materiel_nom_key`(`nom`),
@@ -26,6 +26,7 @@ CREATE TABLE `ReservationPonctuelle` (
     `debut` DATETIME(3) NOT NULL,
     `fin` DATETIME(3) NOT NULL,
     `commentaire` VARCHAR(191) NULL,
+    `materiels` VARCHAR(191) NOT NULL,
     `userId` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)

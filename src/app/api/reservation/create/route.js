@@ -3,7 +3,7 @@ import prisma from "@/lib/db";
 
 export async function POST(request) {
   try {
-    const { objet, lieu, debut, fin, commentaire, userId } =
+    const { objet, lieu, debut, fin, commentaire, materiels, userId } =
       await request.json();
     if (!objet || !lieu || !debut || !fin || !userId) {
       return NextResponse.error("Invalid request");
@@ -15,6 +15,7 @@ export async function POST(request) {
         debut: new Date(debut),
         fin: new Date(fin),
         commentaire,
+        materiels,
         userId,
       },
     });

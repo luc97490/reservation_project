@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IconAp,
   IconCasque,
@@ -12,35 +12,133 @@ import {
   IconVr,
 } from "../ui/Icons";
 import NumberInputWithButtons from "./ui/NumberInputWithButtons";
+import axios from "axios";
 
 export default function ReservationUser() {
-  const [nbpc, setnbpc] = useState(0);
-  const [nbvp, setnbvp] = useState(0);
-  const [nbhp, setnbhp] = useState(0);
-  const [nbvr, setnbvr] = useState(0);
-  const [nbvisio, setnbvisio] = useState(0);
-  const [nbap, setnbap] = useState(0);
-  const [nbcasque, setnbcasque] = useState(0);
-  const [nbrallonge, setnbrallonge] = useState(0);
-  const [nbmulti, setnbmulti] = useState(0);
-  function test() {
-    console.log(nbrallonge);
-    console.log(nbmulti);
-  }
+  const [checkboxValues, setCheckboxValues] = useState({
+    pc: false,
+    vp: false,
+    hp: false,
+    vr: false,
+    visio: false,
+    ap: false,
+    casque: false,
+    rallonge: false,
+    multi: false,
+  });
+  const [videMateriels, setvideMateriels] = useState(false);
+
+  const [nbpc, setnbpc] = useState(1);
+  const [nbvp, setnbvp] = useState(1);
+  const [nbhp, setnbhp] = useState(1);
+  const [nbvr, setnbvr] = useState(1);
+  const [nbvisio, setnbvisio] = useState(1);
+  const [nbap, setnbap] = useState(1);
+  const [nbcasque, setnbcasque] = useState(1);
+  const [nbrallonge, setnbrallonge] = useState(1);
+  const [nbmulti, setnbmulti] = useState(1);
+  const [userId, setidUser] = useState();
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    console.log(name, checked);
+    setCheckboxValues((prevValues) => ({
+      ...prevValues,
+      [name]: checked,
+    }));
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const selectedMaterials = Object.entries(checkboxValues)
+      .filter(([_, checked]) => checked)
+      .map(([material]) => material);
+    if (selectedMaterials.length > 0) {
+      const email = new FormData(event.target).get("email");
+      const objet = new FormData(event.target).get("objet");
+      const lieu = new FormData(event.target).get("lieu");
+      const debut = new FormData(event.target).get("debut");
+      const fin = new FormData(event.target).get("fin");
+      const commentaire = new FormData(event.target).get("commentaire");
+      let userId;
+      try {
+        await axios
+          .post("/api/users/find", { email })
+          .then(function (response) {
+            userId = response.data.userfind.id;
+          });
+      } catch (e) {
+        await axios
+          .post("/api/users/createG", { email })
+          .then(function (response) {
+            userId = response.data.user.id;
+          });
+      }
+
+      setvideMateriels(false);
+      let materiels = [];
+      if (selectedMaterials.includes("pc")) {
+        materiels = [...materiels, `${nbpc} pc`];
+      }
+      if (selectedMaterials.includes("vp")) {
+        materiels = [...materiels, `${nbvp} vp`];
+      }
+      if (selectedMaterials.includes("hp")) {
+        materiels = [...materiels, `${nbhp} hp`];
+      }
+      if (selectedMaterials.includes("vr")) {
+        materiels = [...materiels, `${nbvr} vr`];
+      }
+      if (selectedMaterials.includes("visio")) {
+        materiels = [...materiels, `${nbvisio} visio`];
+      }
+      if (selectedMaterials.includes("ap")) {
+        materiels = [...materiels, `${nbap} ap`];
+      }
+      if (selectedMaterials.includes("casque")) {
+        materiels = [...materiels, `${nbcasque} casque`];
+      }
+      if (selectedMaterials.includes("rallonge")) {
+        materiels = [...materiels, `${nbrallonge} rallonge`];
+      }
+      if (selectedMaterials.includes("multi")) {
+        materiels = [...materiels, `${nbmulti} multi`];
+      }
+      try {
+        await axios
+          .post("/api/reservation/create", {
+            objet,
+            lieu,
+            debut,
+            fin,
+            commentaire,
+            materiels: materiels.join(", "),
+            userId,
+          })
+          .then(function (response) {
+            console.log(response);
+          });
+      } catch (e) {
+        console.error(e);
+      }
+    } else setvideMateriels(true);
+  };
+  useEffect(() => {}, []);
+
   return (
     <div className="p-6 px-40">
       <h1 className="text-center font-bold mb-6">Réservation Matériel</h1>
-      <form action={test}>
+      <form onSubmit={handleSubmit} className="text-center">
         <div className="mb-6">
           <label
             htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Email
+            Email *
           </label>
           <input
             type="email"
             id="email"
+            name="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="john.doe@mio.re"
             required
@@ -52,11 +150,12 @@ export default function ReservationUser() {
               htmlFor="first_name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Prénom
+              Prénom *
             </label>
             <input
               type="text"
               id="first_name"
+              name="prenom"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Joe"
               required
@@ -67,11 +166,12 @@ export default function ReservationUser() {
               htmlFor="last_name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Nom
+              Nom *
             </label>
             <input
               type="text"
               id="last_name"
+              name="nom"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
               required
@@ -83,11 +183,12 @@ export default function ReservationUser() {
               htmlFor="objet"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Objet
+              Objet *
             </label>
             <input
               type="text"
               id="objet"
+              name="objet"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Atelier"
               required
@@ -98,11 +199,12 @@ export default function ReservationUser() {
               htmlFor="lieu"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Lieu
+              Lieu *
             </label>
             <input
               type="tel"
               id="lieu"
+              name="lieu"
               placeholder="Saint Paul"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
@@ -113,11 +215,12 @@ export default function ReservationUser() {
               htmlFor="debut"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Début
+              Début *
             </label>
             <input
               type="datetime-local"
               id="debut"
+              name="debut"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
@@ -127,11 +230,12 @@ export default function ReservationUser() {
               htmlFor="fin"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Fin
+              Fin *
             </label>
             <input
               type="datetime-local"
               id="fin"
+              name="fin"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
@@ -143,26 +247,37 @@ export default function ReservationUser() {
             htmlFor="commentaire"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Commentaire (optionnel)
+            Commentaire
           </label>
           <textarea
             type="textarea"
             id="commentaire"
+            name="commentaire"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
         <div>
-          <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
-            Choix des matériels :
+          <h3 className=" text-lg font-medium text-gray-900 dark:text-white">
+            Choix des matériels * :
           </h3>
-          <ul className="grid w-full gap-6 md:grid-cols-3">
+          {videMateriels ? (
+            <p className="text-red-500">
+              Veuillez choisir au moins un matériel !
+            </p>
+          ) : (
+            <p className="text-red-500  opacity-0">
+              Veuillez choisir au moins un matériel !
+            </p>
+          )}
+          <ul className="grid w-full mt-2 gap-x-6 gap-y-1 md:grid-cols-3">
             <li>
               <input
                 type="checkbox"
                 id="pc"
-                defaultValue
+                name="pc"
                 className="hidden peer"
-                required
+                checked={checkboxValues.pc}
+                onChange={handleCheckboxChange}
               />
               <label
                 htmlFor="pc"
@@ -177,7 +292,7 @@ export default function ReservationUser() {
                   </div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbpc} onChange={setnbpc} />
               </div>
             </li>
@@ -185,9 +300,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="vp"
-                defaultValue
+                name="vp"
+                checked={checkboxValues.vp}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="vp"
@@ -200,7 +316,7 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Vidéo Projecteur</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbvp} onChange={setnbvp} />
               </div>
             </li>
@@ -208,9 +324,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="hp"
-                defaultValue
+                name="hp"
+                checked={checkboxValues.hp}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="hp"
@@ -223,7 +340,7 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Haut-parleur</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbhp} onChange={setnbhp} />
               </div>
             </li>
@@ -231,9 +348,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="vr"
-                defaultValue
+                name="vr"
+                checked={checkboxValues.vr}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="vr"
@@ -246,7 +364,7 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Casque VR</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbvr} onChange={setnbvr} />
               </div>
             </li>
@@ -254,9 +372,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="visio"
-                defaultValue
+                name="visio"
+                checked={checkboxValues.visio}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="visio"
@@ -269,7 +388,7 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Visioconférence</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbvisio} onChange={setnbvisio} />
               </div>
             </li>
@@ -277,9 +396,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="ap"
-                defaultValue
+                name="ap"
+                checked={checkboxValues.ap}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="ap"
@@ -294,7 +414,7 @@ export default function ReservationUser() {
                   </div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbap} onChange={setnbap} />
               </div>
             </li>
@@ -302,9 +422,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="casque"
-                defaultValue
+                name="casque"
+                checked={checkboxValues.casque}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="casque"
@@ -318,7 +439,7 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Casque Audio</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons
                   value={nbcasque}
                   onChange={setnbcasque}
@@ -329,9 +450,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="rallonge"
-                defaultValue
+                name="rallonge"
+                checked={checkboxValues.rallonge}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="rallonge"
@@ -344,7 +466,7 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Rallonge</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons
                   value={nbrallonge}
                   onChange={setnbrallonge}
@@ -355,9 +477,10 @@ export default function ReservationUser() {
               <input
                 type="checkbox"
                 id="multi"
-                defaultValue
+                name="multi"
+                checked={checkboxValues.multi}
+                onChange={handleCheckboxChange}
                 className="hidden peer"
-                required
               />
               <label
                 htmlFor="multi"
@@ -370,18 +493,20 @@ export default function ReservationUser() {
                   <div className="w-full font-semibold">Multiprise</div>
                 </div>
               </label>
-              <div className="text-end peer-checked:block hidden">
+              <div className="text-center peer-checked:opacity-100 opacity-0">
                 <NumberInputWithButtons value={nbmulti} onChange={setnbmulti} />
               </div>
             </li>
           </ul>
         </div>
+        <div className="text-start">
+          <p>* Assurez-vous de compléter tous les champs obligatoires</p>
+        </div>
         <button
-          type="button"
-          onClick={test}
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="submit"
+          className="mt-6 px-10 py-3  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Submit
+          Envoyer
         </button>
       </form>
     </div>

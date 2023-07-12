@@ -21,23 +21,20 @@ export default authMiddleware({
     if (!user) {
       throw new Error("User not found.");
     } else {
-      // const response = await fetch(
-      //   "http://localhost:3000/api/users/create",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       id: user.id,
-      //       email: user.emailAddresses[0].emailAddress,
-      //     }),
-      //   }
-      // );
-      // if (response.ok) {
-      // } else {
-      //   console.log("Une erreur s'est produite lors de la requête");
-      // }
+      const response = await fetch("http://localhost:3000/api/users/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: user.id,
+          email: user.emailAddresses[0].emailAddress,
+        }),
+      });
+      if (response.ok) {
+      } else {
+        console.log("Une erreur s'est produite lors de la requête");
+      }
     }
   },
 });

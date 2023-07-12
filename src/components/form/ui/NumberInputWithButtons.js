@@ -15,7 +15,7 @@ const NumberInput = ({ value, onChange }) => {
   return (
     <input
       type="text"
-      inputMode
+      inputMode="numeric"
       pattern="[0-9]*"
       value={value}
       onChange={handleInputChange}
