@@ -63,6 +63,7 @@ CREATE TABLE `User` (
     `id` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
     `role` ENUM('SuperAdmin', 'Admin', 'User', 'Guest') NOT NULL DEFAULT 'Guest',
+    `image` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `User_email_key`(`email`),
     PRIMARY KEY (`id`)

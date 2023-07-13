@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const { id, email } = await request.json();
+    const { id, image, email } = await request.json();
 
     // Validation des données d'entrée
     if (!id || !email) {
@@ -27,6 +27,7 @@ export async function POST(request) {
       await prisma.user.create({
         data: {
           id: id,
+          image: image,
           email: email,
           role: role,
         },

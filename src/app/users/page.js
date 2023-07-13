@@ -96,7 +96,7 @@ export default function page() {
               >
                 <img
                   className="w-10 h-10 rounded-full"
-                  src="/docs/images/people/profile-picture-1.jpg"
+                  src={user.image}
                   alt="Jese image"
                 />
                 <div className="pl-3">

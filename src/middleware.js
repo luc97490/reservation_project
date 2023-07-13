@@ -17,7 +17,7 @@ export default authMiddleware({
       return NextResponse.redirect(url);
     }
     const user = await clerkClient.users.getUser(auth.userId);
-
+    console.log(user);
     if (!user) {
       throw new Error("User not found.");
     } else {
@@ -28,6 +28,7 @@ export default authMiddleware({
         },
         body: JSON.stringify({
           id: user.id,
+          image: user.profileImageUrl,
           email: user.emailAddresses[0].emailAddress,
         }),
       });
