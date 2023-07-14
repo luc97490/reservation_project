@@ -76,14 +76,6 @@ export default function Pc() {
     const nom = data.get("nom")?.valueOf();
     const etat = data.get("etat")?.valueOf();
     const specsId = stockModele;
-    if (
-      typeof nom !== "string" ||
-      nom.length === 0 ||
-      typeof etat !== "string" ||
-      etat.length === 0
-    ) {
-      throw new Error("Invalid type");
-    }
     axios
       .put("/api/materiels/update", {
         id,
