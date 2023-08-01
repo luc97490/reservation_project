@@ -1,3 +1,6 @@
+"use client";
+import ModalDeleteRow from "./ModalDeleteRow";
+import React, { useEffect, useState } from "react";
 import {
   IconAp,
   IconCasque,
@@ -9,9 +12,9 @@ import {
   IconVp,
   IconVr,
 } from "@/components/ui/Icons";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ModalDeleteRow from "./ModalDeleteRow";
+
+import Link from "next/link";
 
 export default function ModalUpdateRow({ reservation, setRefresh }) {
   const [materielQuantities, setMaterielQuantities] = useState({});
@@ -39,7 +42,6 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
     }
   }, [reservation.objet, reservation.lieu, reservation.debut, reservation.fin]);
   function handleUpdate() {
-    // const id = data.get("id")?.valueOf();
     const materiels = generateUpdatedString();
     const { id, objet, lieu, debut, fin, commentaire } = dataReservation;
     axios
@@ -104,16 +106,8 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
           >
             ✕
           </button>
-
           <div className="px-6">
-            <input
-              type="hidden"
-              name="id"
-              onChange={(e) => handleDataChange("id", e.target.value)}
-              value={dataReservation["id"]}
-            />
             <span className="text-lg font-bold">Modification</span>
-
             <div>
               <label
                 htmlFor="objet"
@@ -121,7 +115,6 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
               >
                 Objet
               </label>
-
               <div className="flex">
                 <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"></span>
                 <input
@@ -130,8 +123,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
                   name="objet"
                   onChange={(e) => handleDataChange("objet", e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Nomade00"
-                  value={dataReservation["objet"]}
+                  value={dataReservation["objet"] || ""}
                 />
               </div>
             </div>
@@ -152,7 +144,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
                   onChange={(e) => handleDataChange("lieu", e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nomade00"
-                  value={dataReservation["lieu"]}
+                  value={dataReservation["lieu"] || ""}
                 />
               </div>
             </div>
@@ -220,7 +212,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
                   handleDataChange("commentaire", e.target.value)
                 }
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                value={dataReservation["commentaire"]}
+                value={dataReservation["commentaire"] || ""}
               />
             </div>
 
@@ -398,9 +390,12 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
               Supprimer{" "}
             </button>
 
-            <button className="w-full bg-white " type="submit">
+            <Link
+              href={`/ponctuelle/demande/attribution/${reservation.id}`}
+              className="w-full bg-white "
+            >
               Attribuer
-            </button>
+            </Link>
             <button type="submit" className="w-full  bg-gray-700 ">
               Modifier
             </button>

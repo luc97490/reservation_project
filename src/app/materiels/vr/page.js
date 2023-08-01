@@ -3,9 +3,8 @@ import RowMateriel from "@/components/materiel/RowMateriel";
 import Table from "@/components/materiel/Table";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
-export default function Pc() {
-  const type = "Ordinateur Portable";
+export default function page() {
+  const type = "Casque VR";
   const [refresh, setRefresh] = useState();
   const [materiels, setMateriels] = useState([]);
 

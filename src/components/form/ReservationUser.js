@@ -37,7 +37,7 @@ export default function ReservationUser() {
   const [nbcasque, setnbcasque] = useState(1);
   const [nbrallonge, setnbrallonge] = useState(1);
   const [nbmulti, setnbmulti] = useState(1);
-  const [userId, setidUser] = useState();
+
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     console.log(name, checked);

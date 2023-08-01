@@ -1,9 +1,7 @@
 "use client";
 import { UserButton, SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import { useTransition } from "react";
 
 export default function IsLoginInButton() {
-  const [isPending, startTransition] = useTransition();
   return (
     <>
       <SignedIn>

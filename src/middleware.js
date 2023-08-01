@@ -16,27 +16,26 @@ export default authMiddleware({
       url.pathname = "/sign-in";
       return NextResponse.redirect(url);
     }
-    const user = await clerkClient.users.getUser(auth.userId);
-    console.log(user);
-    if (!user) {
-      throw new Error("User not found.");
-    } else {
-      const response = await fetch("http://localhost:3000/api/users/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: user.id,
-          image: user.profileImageUrl,
-          email: user.emailAddresses[0].emailAddress,
-        }),
-      });
-      if (response.ok) {
-      } else {
-        console.log("Une erreur s'est produite lors de la requête");
-      }
-    }
+    // const user = await clerkClient.users.getUser(auth.userId);
+    // if (!user) {
+    //   throw new Error("User not found.");
+    // } else {
+    //   const response = await fetch("http://localhost:3000/api/users/create", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       id: user.id,
+    //       image: user.profileImageUrl,
+    //       email: user.emailAddresses[0].emailAddress,
+    //     }),
+    //   });
+    //   if (response.ok) {
+    //   } else {
+    //     console.log("Une erreur s'est produite lors de la requête");
+    //   }
+    // }
   },
 });
 

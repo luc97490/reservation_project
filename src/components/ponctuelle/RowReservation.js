@@ -9,9 +9,8 @@ import {
   IconVp,
   IconVr,
 } from "@/components/ui/Icons";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import ModalUpdateRow from "./ModalUpdateRow";
+
 const renderItems = (inputString) => {
   const items = inputString.split(", ");
   return items.map((item, index) => {

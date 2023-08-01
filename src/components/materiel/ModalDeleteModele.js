@@ -1,32 +1,35 @@
+import React from "react";
 import axios from "axios";
-export default function ModalDeleteRow({ reservation, setRefresh }) {
-  function deleteReservation(data) {
-    const id = data.get("id")?.valueOf();
+export default function ModalDeleteModele({ spec, setRefresh }) {
+  function deleteModele() {
+    const id = spec.id;
     axios
-      .post("/api/reservation/delete", { id: id })
+      .post("/api/specs/delete", { id: id })
       .then(async (response) => {
-        setRefresh((prevRefresh) => !prevRefresh);
+        setRefresh(true);
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
       });
   }
   return (
-    <dialog id={`delete${reservation.id}`} className="modal">
-      <form action={deleteReservation} className="modal-box">
-        <input type="hidden" name="id" value={reservation.id} />
-
+    <dialog id={`delete${spec.id}`} className="modal">
+      <form action={deleteModele} className="modal-box">
         <button
-          type="button"
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-          onClick={() => window[`delete${reservation.id}`].close()}
+          type="button"
+          onClick={() => window[`delete${spec.id}`].close()}
         >
           ✕
         </button>
-
         <h3 className="font-bold text-lg">
-          Voulez-vous réellement supprimer la réservation ?
+          Voulez-vous réellement supprimer ce modèle ?
         </h3>
+
+        <div className="flex font-bold justify-around">
+          <span>{spec.modele}</span>
+          <span>{spec.type}</span>
+        </div>
 
         <div className="modal-action">
           <button
