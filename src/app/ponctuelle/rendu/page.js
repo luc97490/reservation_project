@@ -1,6 +1,5 @@
 "use client";
 import RowAttribution from "@/components/ponctuelle/RowAttributionRendu";
-
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -12,7 +11,7 @@ export default function Demande() {
     const fetchReservations = async () => {
       try {
         await axios
-          .get("/api/asign/ponctuelle/getAttribution")
+          .get("/api/asign/ponctuelle/getRendu")
           .then(function (response) {
             setReservations(response.data.reservations);
           });
@@ -56,7 +55,7 @@ export default function Demande() {
               key={reservation.id}
               reservation={reservation}
               setRefresh={setRefresh}
-              rendu={false}
+              rendu={true}
             />
           ))}
         </tbody>

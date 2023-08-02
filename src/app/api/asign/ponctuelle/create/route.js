@@ -3,15 +3,11 @@ import prisma from "@/lib/db";
 
 export async function POST(request) {
   try {
-    const { reservationId, materielId } = await request.json();
-    if (!reservationId || !materielId)
-      return NextResponse.error("Invalid request");
+    const { materielReservation } = await request.json();
+    console.log(materielReservation);
 
-    const createdAttribution = await prisma.attributionPonctuelle.create({
-      data: {
-        reservationId,
-        materielId,
-      },
+    const createdAttribution = await prisma.attributionPonctuelle.createMany({
+      data: materielReservation,
     });
     return NextResponse.json({ createdAttribution });
   } catch (err) {

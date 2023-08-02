@@ -4,16 +4,15 @@ import prisma from "@/lib/db";
 export async function GET() {
   try {
     const reservations = await prisma.reservationPonctuelle.findMany({
-      include: { user: true },
+      include: {
+        user: true,
+        attribution: true,
+        attribution: { include: { materiel: true } },
+      },
+
       where: {
-        NOT: {
-          attribution: {
-            some: {
-              // Vous pouvez utiliser des filtres ici pour les attributions si nécessaire
-              // Par exemple, pour filtrer les réservations attribuées à un certain matériel
-              // materielId: "ID_DU_MATERIEL",
-            },
-          },
+        attribution: {
+          some: { rendu: false },
         },
       },
     });

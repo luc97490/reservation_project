@@ -3,13 +3,13 @@ import prisma from "@/lib/db";
 
 export async function PUT(request) {
   try {
-    const { id, materielId, rendu } = await request.json();
-    if (!id || !materielId) return NextResponse.error("Invalid request");
+    const { id, rendu, remarque } = await request.json();
+
     const updatedAttribution = await prisma.attributionPonctuelle.update({
       where: { id },
       data: {
-        materielId,
         rendu,
+        remarque,
       },
     });
 

@@ -26,16 +26,7 @@ export default function page() {
 
     const id = data.get("id")?.valueOf();
     let role = "";
-    if (
-      //   typeof idSuperAdmin !== "string" ||
-      //   idSuperAdmin.length === 0 ||
-      typeof id !== "string" ||
-      id.length === 0 ||
-      typeof data.get("role")?.valueOf() !== "string" ||
-      data.get("role")?.valueOf().length === 0
-    ) {
-      throw new Error("Invalid type");
-    }
+
     if (data.get("role")?.valueOf() === "User") {
       role = "Admin";
     } else {

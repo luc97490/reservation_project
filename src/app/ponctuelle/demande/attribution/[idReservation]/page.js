@@ -1,10 +1,30 @@
 "use client";
-import CheckBoxType from "@/components/form/ui/CheckBoxType";
+import BoxType from "@/components/form/ui/BoxType";
 import axios from "axios";
+
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function page({ params: { idReservation } }) {
   const [filteredMateriels, setfilteredMateriels] = useState([]);
+  const [dataMateriel, setdataMateriel] = useState({});
+  const router = useRouter();
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const idKeys = Object.keys(dataMateriel).filter((key) =>
+      key.startsWith("id")
+    );
+    const materielReservation = idKeys.map((key) => ({
+      reservationId: [idReservation][0],
+      materielId: dataMateriel[key],
+    }));
+
+    axios
+      .post("/api/asign/ponctuelle/create", { materielReservation })
+      .then(async (response) => {
+        router.push("/ponctuelle/demande");
+      });
+  };
 
   useEffect(() => {
     const getReservation = async () => {
@@ -31,15 +51,22 @@ export default function page({ params: { idReservation } }) {
 
   return (
     <>
-      <div className="flex gap-3  justify-evenly flex-wrap">
-        {filteredMateriels.map((materiel) => (
-          <CheckBoxType
-            key={filteredMateriels.indexOf(materiel)}
-            nbs={materiel.split(" ")[0]}
-            type={materiel.split(" ")[1]}
-          />
-        ))}
-      </div>
+      <form onSubmit={onSubmit}>
+        <div className="flex gap-3  justify-evenly flex-wrap">
+          {filteredMateriels.map((materiel) => (
+            <BoxType
+              dataMateriel={dataMateriel}
+              setdataMateriel={setdataMateriel}
+              key={filteredMateriels.indexOf(materiel)}
+              nbs={materiel.split(" ")[0]}
+              type={materiel.split(" ")[1]}
+            />
+          ))}
+        </div>{" "}
+        <button className="btn" type="submit">
+          Attribuer
+        </button>
+      </form>
     </>
   );
 }

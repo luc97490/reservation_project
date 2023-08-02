@@ -4,15 +4,25 @@ import prisma from "@/lib/db";
 export async function PUT(request) {
   try {
     const { id, nom, etat, specsId } = await request.json();
-
-    const updatedMateriel = await prisma.materiel.update({
-      where: { id },
-      data: {
-        nom,
-        etat,
-        specsId,
-      },
-    });
+    if (!nom || !specsId) {
+      const updatedMateriel = await prisma.materiel.update({
+        where: { id },
+        data: {
+          etat,
+        },
+      });
+      return NextResponse.json({ updatedMateriel });
+    } else {
+      const updatedMateriel = await prisma.materiel.update({
+        where: { id },
+        data: {
+          nom,
+          etat,
+          specsId,
+        },
+      });
+      return NextResponse.json({ updatedMateriel });
+    }
 
     return NextResponse.json({ updatedMateriel });
   } catch (err) {

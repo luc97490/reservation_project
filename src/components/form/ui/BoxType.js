@@ -13,7 +13,7 @@ import {
 import Select from "react-tailwindcss-select";
 import axios from "axios";
 
-export default function CheckBoxType({ nbs, type }) {
+export default function BoxType({ dataMateriel, setdataMateriel, nbs, type }) {
   const icons = {
     pc: <IconPortable />,
     vp: <IconVp />,
@@ -34,13 +34,13 @@ export default function CheckBoxType({ nbs, type }) {
   };
 
   const [materiel, setmateriel] = useState([]);
-  const [dataMateriel, setdataMateriel] = useState({});
   const [nb, setNb] = useState(1);
   const [select, setselect] = useState([]);
+
   function handleDataChange(champs, value) {
     setdataMateriel((prev) => ({
       ...prev,
-      [champs]: value,
+      [champs + type]: value,
     }));
   }
 
@@ -69,11 +69,11 @@ export default function CheckBoxType({ nbs, type }) {
         selects.push(
           <Select
             isSearchable={true}
-            placeholder={dataMateriel[`materiel${i}`] || ""}
+            placeholder={dataMateriel[`materiel${i}${type}`] || ""}
             options={materiel}
             key={i}
             onChange={(e) => {
-              handleDataChange("id", e.value),
+              handleDataChange(`id${i}`, e.value),
                 handleDataChange(`materiel${i}`, e.label);
             }}
           />

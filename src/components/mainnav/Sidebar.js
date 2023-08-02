@@ -98,7 +98,7 @@ export default function SideBar({ isButtonClicked }) {
             {/* PRET */}
             <li>
               <Link
-                href="/permante/encours"
+                href="/permanente/encours"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <span className=" w-5 h-5">
@@ -114,7 +114,7 @@ export default function SideBar({ isButtonClicked }) {
 
             <li>
               <Link
-                href="/permante/rendu"
+                href="/permanente/rendu"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <span className=" w-5 h-5">

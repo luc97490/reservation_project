@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ModalCreateModele({ setRefresh }) {
   const [noms, setNoms] = useState([]);
@@ -35,14 +36,7 @@ export default function ModalCreateModele({ setRefresh }) {
   function createModele(data, materiels) {
     const type = data.get("type")?.valueOf();
     const modele = data.get("modele")?.valueOf();
-    if (
-      typeof type !== "string" ||
-      type.length === 0 ||
-      typeof modele !== "string" ||
-      modele.length === 0
-    ) {
-      throw new Error("Invalid type");
-    }
+
     axios
       .post("/api/specs/createWithMateriel", {
         type: type,
@@ -63,7 +57,7 @@ export default function ModalCreateModele({ setRefresh }) {
       </button>
 
       <dialog id="addmodele" className="modal">
-        <form action={OrderJson} method="dialog" className="modal-box pb-1">
+        <form action={OrderJson} className="modal-box pb-1">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             type="button"

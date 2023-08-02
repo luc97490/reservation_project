@@ -46,6 +46,7 @@ model AttributionPonctuelle {
   reservationId String
   materiel      Materiel              @relation(fields: [materielId], references: [id])
   materielId    String
+  remarque      String?
   dateAsign     DateTime              @default(now())
   dateRendu     DateTime?
   rendu         Boolean               @default(false)

@@ -37,10 +37,6 @@ export default function ModalDetails({ spec }) {
             </tbody>
           </table>
         </div>
-
-        <label className="modal-backdrop" htmlFor={spec.id}>
-          Close
-        </label>
       </dialog>
     </>
   );

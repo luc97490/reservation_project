@@ -31,14 +31,7 @@ export default function ModalCreateMateriel({ type, setRefresh }) {
   function createMateriel(data) {
     const nom = data.get("nom")?.valueOf();
     const etat = data.get("etat")?.valueOf();
-    if (
-      typeof nom !== "string" ||
-      nom.length === 0 ||
-      typeof etat !== "string" ||
-      etat.length === 0
-    ) {
-      throw new Error("Invalid type");
-    }
+
     axios
       .post("/api/materiels/create", {
         nom: nom,
