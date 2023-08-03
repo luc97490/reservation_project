@@ -15,6 +15,9 @@ export default function Menu() {
           <Link href="/materiels">Matériels</Link>
         </li>
         <li>
+          <Link href="/permanente/attribution">Attribution permanente</Link>
+        </li>
+        <li>
           <Link href="/users">Gestion Utilisateur</Link>
         </li>
       </ul>

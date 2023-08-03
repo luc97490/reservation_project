@@ -62,7 +62,7 @@ model AttributionPermanente {
   observation String?
   userId      String
   materiel    Materiel  @relation(fields: [materielId], references: [id])
-  User        User      @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
 }
 
 enum Role {
@@ -74,6 +74,7 @@ enum Role {
 
 model User {
   id          String                  @id @default(uuid())
+  idclerk     String?                 @unique
   email       String                  @unique
   role        Role                    @default(Guest)
   image       String?

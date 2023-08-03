@@ -10,9 +10,11 @@ export async function POST(request) {
       return NextResponse.error("Invalid request");
     }
 
-    const userExists = await prisma.user.findFirst({
-      where: { id: id },
-      take: 1,
+    const userExists = await prisma.user.findUnique({
+      where: { idclerk: id },
+    });
+    const emailExists = await prisma.user.findUnique({
+      where: { email },
     });
 
     if (!userExists) {
@@ -22,16 +24,27 @@ export async function POST(request) {
       if (email === process.env.SUPER_ADMIN) {
         role = "SuperAdmin";
       }
-
+      if (emailExists) {
+        await prisma.user.update({
+          where: { email },
+          data: {
+            idclerk: id,
+            image: image,
+            email: email,
+            role: role,
+          },
+        });
+      } else {
+        await prisma.user.create({
+          data: {
+            idclerk: id,
+            image: image,
+            email: email,
+            role: role,
+          },
+        });
+      }
       // Création sécurisée de l'utilisateur
-      await prisma.user.create({
-        data: {
-          id: id,
-          image: image,
-          email: email,
-          role: role,
-        },
-      });
 
       return NextResponse.json({});
     }

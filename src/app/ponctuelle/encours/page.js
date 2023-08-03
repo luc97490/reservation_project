@@ -4,7 +4,7 @@ import RowAttribution from "@/components/ponctuelle/RowAttributionRendu";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function Demande() {
+export default function Encours() {
   const [reservations, setReservations] = useState([]);
   const [refresh, setRefresh] = useState();
   useEffect(() => {

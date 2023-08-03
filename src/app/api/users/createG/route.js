@@ -9,9 +9,8 @@ export async function POST(request) {
     if (!email) {
       return NextResponse.error("Invalid request");
     }
-    const userExists = await prisma.user.findFirst({
+    const userExists = await prisma.user.findUnique({
       where: { email },
-      take: 1,
     });
     if (!userExists) {
       const user = await prisma.user.create({

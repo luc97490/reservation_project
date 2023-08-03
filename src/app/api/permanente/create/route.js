@@ -3,16 +3,18 @@ import prisma from "@/lib/db";
 
 export async function POST(request) {
   try {
-    const { idclerk } = await request.json();
-    if (!idclerk) {
+    const { userId, preparateur, materielId } = await request.json();
+    if (!preparateur || !materielId || !userId) {
       return NextResponse.error("Invalid request");
     }
-    const userfind = await prisma.user.findUnique({
-      where: {
-        idclerk,
+    const createdReservation = await prisma.attributionPermanente.create({
+      data: {
+        preparateur,
+        materielId,
+        userId,
       },
     });
-    return NextResponse.json({ userfind });
+    return NextResponse.json({ createdReservation });
   } catch (err) {
     console.error("Error creating specs:", err);
     return NextResponse.error("Failed to create specs");

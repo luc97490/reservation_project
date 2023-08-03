@@ -60,7 +60,7 @@ export default function RowReservation({ reservation, setRefresh }) {
       >
         <img
           className="w-10 h-10 rounded-full"
-          src={reservation.user.image}
+          src={reservation.user.image || "/user_no_image.png"}
           alt={reservation.user.email}
         />
         <div className="pl-3">
