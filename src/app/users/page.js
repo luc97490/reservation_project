@@ -86,27 +86,21 @@ export default function page() {
                 className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 <img
-                  className="w-10 h-10 rounded-full"
-                  src={user.image}
+                  className="w-10 h-10 object-cover rounded-full"
+                  src={user.image || "/user_no_image.png"}
                   alt="Jese image"
                 />
                 <div className="pl-3">
-                  <div className="text-base font-semibold">{`
-               ${
-                 user.email
-                   .split("@")[0]
-                   .split(".")[0]
-                   .charAt(0)
-                   .toUpperCase() +
-                 user.email.split("@")[0].split(".")[0].slice(1)
-               } ${
-                    user.email
-                      .split("@")[0]
-                      .split(".")[1]
-                      .charAt(0)
-                      .toUpperCase() +
-                    user.email.split("@")[0].split(".")[1].slice(1)
-                  }`}</div>
+                  <div className="text-base font-semibold">
+                    {" "}
+                    <span className=" uppercase">
+                      {user.email.split("@")[0].split(".")[0]}
+                    </span>
+                    <span className="capitalize">
+                      {" "}
+                      {user.email.split("@")[0].split(".")[1]}{" "}
+                    </span>
+                  </div>
                   <div className="font-normal text-gray-500">{user.email}</div>
                 </div>
               </th>
