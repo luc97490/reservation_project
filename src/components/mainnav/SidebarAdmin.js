@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Logo from "../ui/Logo";
 import {
@@ -7,14 +8,13 @@ import {
   IconEnCours,
   IconHp,
   IconPortable,
-  IconRallonge,
   IconRendu,
   IconVisio,
   IconVp,
   IconVr,
 } from "../ui/Icons";
 
-export default function SideBar({ isButtonClicked }) {
+export default function SidebarAdmin({ isButtonClicked }) {
   const wSide = isButtonClicked ? "w-24" : "w-72";
   const centerIcon = isButtonClicked ? "justify-center" : "mx-7";
   const hiddenText = isButtonClicked

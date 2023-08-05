@@ -13,7 +13,7 @@ export default function AttributionPermanente() {
     const preparateur = new FormData(event.target).get("preparateur");
     const idMaterielSelect = dataMateriel["id"];
     const userFind = await axios.post("/api/users/find", { email });
-    console.log(userFind.data.userfind);
+
     if (userFind.data.userfind) {
       axios
         .post("/api/permanente/create", {
@@ -21,9 +21,7 @@ export default function AttributionPermanente() {
           preparateur,
           materielId: idMaterielSelect,
         })
-        .then(async (response) => {
-          console.log(response);
-        });
+        .then(async (response) => {});
     } else {
       const newUser = await axios.post("/api/users/createG", {
         email,
@@ -34,9 +32,7 @@ export default function AttributionPermanente() {
           preparateur,
           materielId: idMaterielSelect,
         })
-        .then(async (response) => {
-          console.log(response);
-        });
+        .then(async (response) => {});
     }
   };
 
@@ -51,12 +47,6 @@ export default function AttributionPermanente() {
     async function getMateriel() {
       await axios.get("/api/materiels/getAll").then(async (response) => {
         setmateriel(
-          response.data.materiels.map(({ id, nom }) => ({
-            value: id,
-            label: nom,
-          }))
-        );
-        console.log(
           response.data.materiels.map(({ id, nom }) => ({
             value: id,
             label: nom,

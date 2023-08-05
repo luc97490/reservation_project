@@ -13,7 +13,6 @@ export default function Encours() {
       try {
         await axios.get("/api/permanente/getEncours").then(function (response) {
           setattributions(response.data.attribution);
-          console.log(response.data.attribution);
         });
       } catch (error) {
         console.error("Une erreur s'est produite :", error);

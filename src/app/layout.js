@@ -1,5 +1,4 @@
 import "./globals.css";
-import { dark } from "@clerk/themes";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import MainNavigation from "@/components/MainNavigation";

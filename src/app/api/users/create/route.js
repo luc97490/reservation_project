@@ -16,7 +16,7 @@ export async function POST(request) {
     const emailExists = await prisma.user.findUnique({
       where: { email },
     });
-
+    let userfind;
     if (!userExists) {
       let role = "User";
 
@@ -25,7 +25,7 @@ export async function POST(request) {
         role = "SuperAdmin";
       }
       if (emailExists) {
-        await prisma.user.update({
+        userfind = await prisma.user.update({
           where: { email },
           data: {
             idclerk: id,
@@ -35,7 +35,7 @@ export async function POST(request) {
           },
         });
       } else {
-        await prisma.user.create({
+        userfind = await prisma.user.create({
           data: {
             idclerk: id,
             image: image,
@@ -46,7 +46,7 @@ export async function POST(request) {
       }
       // Création sécurisée de l'utilisateur
 
-      return NextResponse.json({});
+      return NextResponse.json({ userfind });
     }
 
     return NextResponse.error("User already exists");

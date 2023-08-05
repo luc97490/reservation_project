@@ -1,5 +1,5 @@
 "use client";
-import RowAttributionRendu from "@/components/permanente/RowAttribution";
+
 import RowRendu from "@/components/permanente/RowRendu";
 
 import axios from "axios";
@@ -14,7 +14,6 @@ export default function Encours() {
       try {
         await axios.get("/api/permanente/getRendu").then(function (response) {
           setattributions(response.data.attribution);
-          console.log(response.data.attribution);
         });
       } catch (error) {
         console.error("Une erreur s'est produite :", error);
@@ -59,4 +58,3 @@ export default function Encours() {
     </div>
   );
 }
-0;

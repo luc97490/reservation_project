@@ -45,7 +45,7 @@ export default function Demande() {
               materiels
             </th>
             <th scope="col" className="px-6 py-3">
-              Action
+              Etat
             </th>
           </tr>
         </thead>

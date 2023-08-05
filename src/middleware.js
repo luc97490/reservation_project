@@ -1,7 +1,7 @@
 import { authMiddleware } from "@clerk/nextjs";
-import { clerkClient } from "@clerk/nextjs";
-
 import { NextResponse } from "next/server";
+import { GlobalRef } from "./lib/GlobalRef";
+
 export default authMiddleware({
   publicRoutes: ["/", "/sign-in", "/sign-up", "/api(.*)"],
   async afterAuth(auth, req) {
@@ -16,29 +16,43 @@ export default authMiddleware({
       url.pathname = "/sign-in";
       return NextResponse.redirect(url);
     }
-    // const user = await clerkClient.users.getUser(auth.userId);
-    // if (!user) {
-    //   throw new Error("User not found.");
-    // } else {
-    //   const response = await fetch("http://localhost:3000/api/users/create", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       id: user.id,
-    //       image: user.profileImageUrl,
-    //       email: user.emailAddresses[0].emailAddress,
-    //     }),
-    //   });
-    //   if (response.ok) {
-    //   } else {
-    //     console.log("Une erreur s'est produite lors de la requête");
-    //   }
-    // }
+    // Get ROLE
+    const searchUser = await fetch("http://localhost:3000/api/users/find", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idclerk: auth.userId,
+      }),
+    });
+    const finduser = await searchUser.json();
+    const role = finduser.userfind.role;
+    const globalRole = new GlobalRef("role");
+    globalRole.value = role;
+    const requiredRole = getRequiredRole(req.nextUrl.pathname); // une fonction qui renvoie le rôle requis pour la page demandée
+
+    if (!requiredRole.includes(role)) {
+      url.pathname = "/";
+      return NextResponse.redirect(url);
+    }
   },
 });
 
+function getRequiredRole(pathname) {
+  if (
+    pathname.startsWith("/permanente") ||
+    pathname.startsWith("/ponctuelle") ||
+    pathname.startsWith("/materiels")
+  ) {
+    return ["Admin", "SuperAdmin"];
+  }
+  if (pathname.startsWith("/users")) {
+    return ["Admin", "User"];
+  } else {
+    return ["User"];
+  }
+}
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)"],
 };

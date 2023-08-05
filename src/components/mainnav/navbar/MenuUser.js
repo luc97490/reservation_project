@@ -1,7 +1,6 @@
 import Link from "next/link";
-import React from "react";
 
-export default function Menu() {
+export default function MenuUser() {
   return (
     <div
       className="items-center justify-between hidden w-full md:flex md:w-auto "
@@ -12,13 +11,7 @@ export default function Menu() {
           <Link href="/">Accueil</Link>
         </li>
         <li>
-          <Link href="/materiels">Matériels</Link>
-        </li>
-        <li>
-          <Link href="/permanente/attribution">Attribution permanente</Link>
-        </li>
-        <li>
-          <Link href="/users">Gestion Utilisateur</Link>
+          <Link href="/materiels">Gestion de mes reservations</Link>
         </li>
       </ul>
     </div>

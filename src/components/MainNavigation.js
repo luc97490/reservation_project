@@ -1,9 +1,19 @@
 "use client";
-
+import { GlobalRef } from "@/lib/GlobalRef";
 import Navbar from "./mainnav/Navbar";
-import SideBar from "./mainnav/Sidebar";
-import { useState } from "react";
-export default function ButtonSidebar({ children }) {
+import SidebarAdmin from "./mainnav/SidebarAdmin";
+import { useEffect, useState } from "react";
+import SidebarUser from "./mainnav/SidebarUser";
+
+export default function MainNavigation({ children }) {
+  let globalRole;
+  let role;
+  useEffect(() => {
+    globalRole = new GlobalRef("role");
+    role = globalRole.value;
+    console.log(role);
+  }, [role]);
+
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [mlButton, setmlButton] = useState("left-273");
   const [mlContent, setmlContent] = useState("ml-288");
@@ -37,7 +47,12 @@ export default function ButtonSidebar({ children }) {
         </svg>
       </button>
       <Navbar isButtonClicked={isButtonClicked} />
-      <SideBar isButtonClicked={isButtonClicked} />
+      {role === "User" ? (
+        <SidebarAdmin isButtonClicked={isButtonClicked} />
+      ) : (
+        <SidebarUser isButtonClicked={isButtonClicked} />
+      )}
+
       <div className="scroll-container">
         <div className={`content pt-24  ${mlContent} p-4`}>{children}</div>
       </div>

@@ -40,7 +40,6 @@ export default function ReservationUser() {
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
-    console.log(name, checked);
     setCheckboxValues((prevValues) => ({
       ...prevValues,
       [name]: checked,
@@ -62,7 +61,7 @@ export default function ReservationUser() {
       let userId;
       try {
         await axios
-          .post("/api/users/find", { email })
+          .post("/api/users/findEmail", { email })
           .then(function (response) {
             userId = response.data.userfind.id;
           });
@@ -115,7 +114,7 @@ export default function ReservationUser() {
             userId,
           })
           .then(function (response) {
-            console.log(response);
+            //
           });
       } catch (e) {
         console.error(e);
