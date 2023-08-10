@@ -6,13 +6,10 @@ import { useEffect, useState } from "react";
 import SidebarUser from "./mainnav/SidebarUser";
 
 export default function MainNavigation({ children }) {
-  let globalRole;
-  let role;
+  const [role, setRole] = useState();
   useEffect(() => {
-    globalRole = new GlobalRef("role");
-    role = globalRole.value;
-    console.log(role);
-  }, [role]);
+    setRole(localStorage.getItem("role"));
+  }, []);
 
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [mlButton, setmlButton] = useState("left-273");
@@ -47,7 +44,8 @@ export default function MainNavigation({ children }) {
         </svg>
       </button>
       <Navbar isButtonClicked={isButtonClicked} />
-      {role === "User" ? (
+      {console.log(role)}
+      {["Admin", "SuperAdmin"].includes(role) ? (
         <SidebarAdmin isButtonClicked={isButtonClicked} />
       ) : (
         <SidebarUser isButtonClicked={isButtonClicked} />

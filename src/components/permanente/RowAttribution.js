@@ -1,3 +1,5 @@
+import ModalUpdatePermanente from "./ModalUpdatePermanente";
+
 export default function RowAttribution({ attribution, setRefresh }) {
   function formatDateString(dateString) {
     const dateObj = new Date(dateString);
@@ -48,10 +50,11 @@ export default function RowAttribution({ attribution, setRefresh }) {
         <td className="px-2 py-2">{attribution.preparateur}</td>
 
         <td className="px-2 py-2 font-bold">{attribution.materiel.nom}</td>
-        <td scope="row" className="p-0 text-end">
-          <button className="m-0 mr-px w-6/12 btn  rounded-none rounded-e-lg">
-            &gt;
-          </button>
+        <td scope="row">
+          <ModalUpdatePermanente
+            attribution={attribution}
+            setRefresh={setRefresh}
+          />
         </td>
       </tr>
     </>

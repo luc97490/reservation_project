@@ -74,11 +74,11 @@ export default function page() {
                 scope="row"
                 className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
               >
-                <img
+                {/* <img
                   className="w-10 h-10 rounded-full"
                   src="/docs/images/people/profile-picture-1.jpg"
                   alt="Jese image"
-                />
+                /> */}
                 <div className="pl-3">{spec.modele}</div>
               </td>
               <td className="px-6 py-4">{spec.type}</td>

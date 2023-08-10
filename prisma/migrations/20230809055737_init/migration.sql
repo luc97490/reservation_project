@@ -37,6 +37,7 @@ CREATE TABLE `AttributionPonctuelle` (
     `id` VARCHAR(191) NOT NULL,
     `reservationId` VARCHAR(191) NOT NULL,
     `materielId` VARCHAR(191) NOT NULL,
+    `remarque` VARCHAR(191) NULL,
     `dateAsign` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `dateRendu` DATETIME(3) NULL,
     `rendu` BOOLEAN NOT NULL DEFAULT false,
@@ -61,10 +62,12 @@ CREATE TABLE `AttributionPermanente` (
 -- CreateTable
 CREATE TABLE `User` (
     `id` VARCHAR(191) NOT NULL,
+    `idclerk` VARCHAR(191) NULL,
     `email` VARCHAR(191) NOT NULL,
     `role` ENUM('SuperAdmin', 'Admin', 'User', 'Guest') NOT NULL DEFAULT 'Guest',
-    `image` VARCHAR(191) NOT NULL,
+    `image` VARCHAR(191) NULL,
 
+    UNIQUE INDEX `User_idclerk_key`(`idclerk`),
     UNIQUE INDEX `User_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -13,7 +13,7 @@ export default function AttributionPermanente() {
     const email = new FormData(event.target).get("email");
     const preparateur = new FormData(event.target).get("preparateur");
     const idMaterielSelect = dataMateriel["id"];
-    const userFind = await axios.post("/api/users/find", { email });
+    const userFind = await axios.post("/api/users/findEmail", { email });
 
     if (userFind.data.userfind) {
       axios

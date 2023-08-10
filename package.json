@@ -12,7 +12,7 @@
     "@clerk/localizations": "^1.22.0",
     "@clerk/nextjs": "^4.21.10",
     "@clerk/themes": "^1.7.5",
-    "@prisma/client": "^5.0.0",
+    "@prisma/client": "^5.1.1",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "eslint": "8.43.0",
@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "daisyui": "^3.2.1",
-    "prisma": "^5.0.0"
+    "prisma": "^5.1.1"
   }
 }

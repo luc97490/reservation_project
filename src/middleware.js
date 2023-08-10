@@ -1,6 +1,5 @@
 import { authMiddleware } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { GlobalRef } from "./lib/GlobalRef";
 
 export default authMiddleware({
   publicRoutes: ["/", "/sign-in", "/sign-up", "/api(.*)"],
@@ -26,10 +25,9 @@ export default authMiddleware({
         idclerk: auth.userId,
       }),
     });
+
     const finduser = await searchUser.json();
     const role = finduser.userfind.role;
-    const globalRole = new GlobalRef("role");
-    globalRole.value = role;
     const requiredRole = getRequiredRole(req.nextUrl.pathname); // une fonction qui renvoie le rôle requis pour la page demandée
 
     if (!requiredRole.includes(role)) {
@@ -48,7 +46,7 @@ function getRequiredRole(pathname) {
     return ["Admin", "SuperAdmin"];
   }
   if (pathname.startsWith("/users")) {
-    return ["Admin", "User"];
+    return ["Admin", "User", "SuperAdmin"];
   } else {
     return ["User"];
   }
