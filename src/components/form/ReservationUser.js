@@ -105,6 +105,7 @@ export default function ReservationUser() {
       try {
         await axios
           .post("/api/reservation/create", {
+            email,
             objet,
             lieu,
             debut,
