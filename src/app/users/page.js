@@ -6,9 +6,11 @@ import axios from "axios";
 
 export default function page() {
   const [users, setUsers] = useState([]);
-  const [newrole, setRole] = useState();
+  const [refresh, setRefresh] = useState(false);
+
   useEffect(() => {
-    setRole(false);
+    setRefresh(false);
+
     const fetchData = async () => {
       try {
         await axios.get("/api/users/getAll").then(function (response) {
@@ -19,11 +21,8 @@ export default function page() {
       }
     };
     fetchData();
-  }, [newrole]);
+  }, [refresh]);
   function updateRole(data) {
-    setRole(true);
-    // const idSuperAdmin = data.get("idSuper")?.valueOf();
-
     const id = data.get("id")?.valueOf();
     let role = "";
 
@@ -39,7 +38,9 @@ export default function page() {
         id: id,
         role: role,
       })
-      .then(async (response) => {})
+      .then(async (response) => {
+        setRefresh(true);
+      })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
       });

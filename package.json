@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview-email": "email dev"
   },
   "dependencies": {
     "@clerk/localizations": "^1.22.0",
     "@clerk/nextjs": "^4.21.10",
     "@clerk/themes": "^1.7.5",
     "@prisma/client": "^5.1.1",
+    "@react-email/container": "0.0.8",
+    "@react-email/html": "0.0.4",
+    "@react-email/section": "0.0.9",
+    "@react-email/text": "0.0.5",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "eslint": "8.43.0",
@@ -21,14 +26,17 @@
     "flowbite-react": "^0.4.9",
     "next": "13.4.7",
     "node-fetch": "^3.3.1",
+    "nodemailer": "^6.9.4",
     "postcss": "^8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-email": "1.9.4",
     "react-select": "^5.7.4",
     "react-tailwindcss-select": "^1.8.5",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.9",
     "daisyui": "^3.2.1",
     "prisma": "^5.1.1"
   }

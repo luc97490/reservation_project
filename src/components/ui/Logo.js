@@ -32,7 +32,7 @@ export default function Logo() {
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0" />
-          <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
+          <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="c"
@@ -43,7 +43,7 @@ export default function Logo() {
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0" />
-          <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
+          <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="d"
@@ -54,7 +54,7 @@ export default function Logo() {
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0" />
-          <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
+          <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="e"
@@ -65,10 +65,10 @@ export default function Logo() {
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0" />
-          <stop offset="1" stopColor="#8B8B8B" stopOpacity="0" />
+          <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
         </linearGradient>
         <clipPath id="a">
-          <path fill="#fff" d="M0 0H40V40H0z" />
+          <path fill="#FFFFFF" d="M0 0H40V40H0z" />
         </clipPath>
       </defs>
     </svg>
