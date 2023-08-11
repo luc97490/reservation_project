@@ -1,5 +1,4 @@
 "use client";
-import { GlobalRef } from "@/lib/GlobalRef";
 import Navbar from "./mainnav/Navbar";
 import SidebarAdmin from "./mainnav/SidebarAdmin";
 import { useEffect, useState } from "react";

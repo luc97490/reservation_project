@@ -86,13 +86,15 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
   }
 
   return (
-    <td className="px-2 py-2">
-      <button
-        className="btn btn-sm text-xs"
-        onClick={() => window[`dialog${reservation.id}`].showModal()}
-      >
-        Modifier
-      </button>
+    <td>
+      <div className="p-0 text-end">
+        <button
+          className="m-0 mr-px w-6/12 btn  rounded-none rounded-e-lg"
+          onClick={() => window[`dialog${reservation.id}`].showModal()}
+        >
+          &gt;
+        </button>
+      </div>
       <dialog id={`dialog${reservation.id}`} className="modal">
         <form
           onSubmit={handleUpdate}
@@ -384,7 +386,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
           </div>
           <div className="flex justify-between w-full h-10 mt-10">
             <button
-              className="w-full text-center cursor-pointer bg-gray-700"
+              className="w-full  bg-gray-700"
               onClick={() => window[`delete${reservation.id}`].showModal()}
             >
               Supprimer{" "}
@@ -392,7 +394,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
 
             <Link
               href={`/ponctuelle/demande/attribution/${reservation.id}`}
-              className="w-full bg-white "
+              className="w-full flex justify-center items-center bg-white "
             >
               Attribuer
             </Link>

@@ -1,10 +1,7 @@
-"use client";
 import Link from "next/link";
 import Logo from "../ui/Logo";
 import {
   IconCalendar,
-  IconDemande,
-  IconEnCours,
   IconFacebook,
   IconFolder,
   IconGoupeUser,

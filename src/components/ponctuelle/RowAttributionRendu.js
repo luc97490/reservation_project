@@ -53,12 +53,18 @@ export default function RowAttributionRendu({
     const formattedDate = dateObj.toLocaleDateString("fr-FR", options);
     return formattedDate;
   }
+  let bgcolor = "bg-white";
+  if (!rendu) {
+    formatDateString(reservation.fin) < formatDateString(new Date())
+      ? (bgcolor = "bg-red-400 dark:bg-black")
+      : (bgcolor = "bg-white dark:bg-gray-800");
+  }
 
   return (
     <>
       <tr
         key={reservation.id}
-        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+        className={` ${bgcolor} file:border-b  dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600`}
       >
         <th
           scope="row"

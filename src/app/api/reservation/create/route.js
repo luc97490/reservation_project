@@ -67,31 +67,119 @@ export async function POST(request) {
         userId,
       },
     });
-    const emailContent = `
-    <div>
-    <table>
-      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <td className="px-2 py-2">
-          <div>${formatDateString(debut)}</div>
-          <div>${formatDateString(fin)}</div>
-        </td>
-        <td className="px-2 py-2">
-          <div>${objet}</div>
-          <div>${lieu}</div>
-        </td>
-        <td className="px-2 py-2">${commentaire}</td>
-        <td className=" grid grid-cols-3 px-2 py-2 gap-y-2 h-auto ">
-          ${render(renderItems(materiels))}
-        </td>
-      </tr>
-    </table>
-  </div>
+    const emailUserContent = `
+    <p style="color: #333;text-transform: capitalize;">Bonjour, 
+    ${email.split("@")[0].split(".")[1]}
+    </p>
+
+<table style="border-collapse: collapse; width: 100%">
+  <tr style="background-color: #f2f2f2">
+    <td style="padding: 8px; border: 1px solid #ddd">
+      <strong>Détails de la réservation :</strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border: 1px solid #ddd">
+      <strong>Matériels : </strong>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border: 1px solid #ddd; display: flex; gap : 16px;  text-align: center"> ${render(
+      renderItems(materiels)
+    )}</td>
+  </tr>
+
+  <tr>
+    <td style="padding: 8px; border: 1px solid #ddd">
+      <strong>Objet :</strong> ${objet}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border: 1px solid #ddd">
+      <strong>Lieu :</strong> ${lieu}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border: 1px solid #ddd">
+      <strong>Début :</strong> ${formatDateString(debut)}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border: 1px solid #ddd">
+      <strong>Fin :</strong> ${formatDateString(fin)}
+    </td>
+  </tr>
+</table>
+<p style="color: #333">Cordialement.</p>
+`;
+
+    const emailAdminContent = `
+<p style="color: #333;text-transform: capitalize;">Bonjour,</p>
+
+<table style="border-collapse: collapse; width: 100%">
+<tr style="background-color: #f2f2f2">
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Détails de la réservation :</strong>
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd ;text-transform: capitalize;">
+  <strong>Nom Prénom : </strong>${email.split("@")[0].split(".")[0]} ${
+      email.split("@")[0].split(".")[1]
+    }
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Email : </strong> ${email}
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Matériels : </strong>
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd; display: flex; gap : 16px;  text-align: center"> ${render(
+      renderItems(materiels)
+    )}</td>
+</tr>
+
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Objet :</strong> ${objet}
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Lieu :</strong> ${lieu}
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Début :</strong> ${formatDateString(debut)}
+</td>
+</tr>
+<tr>
+<td style="padding: 8px; border: 1px solid #ddd">
+  <strong>Fin :</strong> ${formatDateString(fin)}
+</td>
+</tr>
+</table>
+<p style="color: #333">Cordialement.</p>
 `;
 
     await sendEmail({
       to: email,
-      subject: "Welcome to NextAPI",
-      html: emailContent,
+      subject: "Réservation matériel",
+      html: emailUserContent,
+    });
+    await sendEmail({
+      to: "randriamahefa.pascal@mio.re",
+      subject: `Réservation : ${objet} - ${lieu} - ${
+        email.split("@")[0].split(".")[0]
+      } ${email.split("@")[0].split(".")[1]}`,
+      html: emailAdminContent,
     });
     return NextResponse.json({ message: "created" });
   } catch (err) {

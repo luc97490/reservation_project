@@ -1,3 +1,4 @@
+"use client";
 import {
   IconAp,
   IconCasque,
@@ -11,31 +12,30 @@ import {
 } from "@/components/ui/Icons";
 import ModalUpdateRow from "./ModalUpdateRow";
 
-const renderItems = (inputString) => {
-  const items = inputString.split(", ");
-  return items.map((item, index) => {
-    const [quantity, label] = item.split(" ");
-
-    return (
-      <div key={index} className="flex gap-1">
-        <span>{`${quantity}x`}</span>
-        <div className="w-5 h-5">
-          {label === "pc" && <IconPortable />}
-          {label === "vp" && <IconVp />}
-          {label === "hp" && <IconHp />}
-          {label === "vr" && <IconVr />}
-          {label === "visio" && <IconVisio />}
-          {label === "ap" && <IconAp />}
-          {label === "casque" && <IconCasque />}
-          {label === "multi" && <IconMulti />}
-          {label === "rallonge" && <IconRallonge />}
-        </div>
-      </div>
-    );
-  });
-};
-
 export default function RowReservation({ reservation, setRefresh }) {
+  const renderItems = (inputString) => {
+    const items = inputString.split(", ");
+    return items.map((item, index) => {
+      const [quantity, label] = item.split(" ");
+
+      return (
+        <div key={index} className="flex gap-1">
+          <span>{`${quantity}x`}</span>
+          <div className="w-5 h-5">
+            {label === "pc" && <IconPortable />}
+            {label === "vp" && <IconVp />}
+            {label === "hp" && <IconHp />}
+            {label === "vr" && <IconVr />}
+            {label === "visio" && <IconVisio />}
+            {label === "ap" && <IconAp />}
+            {label === "casque" && <IconCasque />}
+            {label === "multi" && <IconMulti />}
+            {label === "rallonge" && <IconRallonge />}
+          </div>
+        </div>
+      );
+    });
+  };
   function formatDateString(dateString) {
     const dateObj = new Date(dateString);
     const options = {

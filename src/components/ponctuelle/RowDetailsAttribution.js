@@ -18,6 +18,8 @@ export default function RowDetailsAttribution({
                 <td></td>
                 <td></td>
                 <td></td>
+                <td className="font-bold">{attribution.materiel.nom}</td>
+                <td>{attribution.materiel.etat}</td>
                 <td>
                   {rendu ? (
                     <>{attribution.remarque}</>
@@ -28,8 +30,6 @@ export default function RowDetailsAttribution({
                     />
                   )}
                 </td>
-                <td className="font-bold">{attribution.materiel.nom}</td>
-                <td>{attribution.materiel.etat}</td>
               </tr>
             );
           } else {

@@ -1,4 +1,3 @@
-"use client";
 import { UserButton, SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export default function IsLoginInButton() {
