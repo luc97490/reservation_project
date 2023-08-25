@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.9",
-    "daisyui": "^3.2.1",
+    "daisyui": "^3.5.1",
     "prisma": "^5.1.1"
   }
 }

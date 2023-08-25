@@ -43,7 +43,6 @@ export default function MainNavigation({ children }) {
         </svg>
       </button>
       <Navbar isButtonClicked={isButtonClicked} />
-      {console.log(role)}
       {["Admin", "SuperAdmin"].includes(role) ? (
         <SidebarAdmin isButtonClicked={isButtonClicked} />
       ) : (

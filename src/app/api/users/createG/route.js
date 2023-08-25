@@ -13,16 +13,15 @@ export async function POST(request) {
       where: { email },
     });
     if (!userExists) {
-      const user = await prisma.user.create({
+      await prisma.user.create({
         data: {
           email: email,
         },
       });
 
-      return NextResponse.json({ user });
+      return NextResponse.json({ message: "User created" });
     }
-
-    return NextResponse.error("User already exists");
+    return NextResponse.json({ message: "User exist" });
   } catch (err) {
     console.error(err);
     return NextResponse.error("Internal server error");

@@ -68,50 +68,50 @@ export async function POST(request) {
       },
     });
     const emailUserContent = `
-    <p style="color: #333;text-transform: capitalize;">Bonjour, 
-    ${email.split("@")[0].split(".")[1]}
-    </p>
+      <p style="color: #333;text-transform: capitalize;">Bonjour, 
+      ${email.split("@")[0].split(".")[1]}
+      </p>
 
-<table style="border-collapse: collapse; width: 100%">
-  <tr style="background-color: #f2f2f2">
-    <td style="padding: 8px; border: 1px solid #ddd">
-      <strong>Détails de la réservation :</strong>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding: 8px; border: 1px solid #ddd">
-      <strong>Matériels : </strong>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding: 8px; border: 1px solid #ddd; display: flex; gap : 16px;  text-align: center"> ${render(
-      renderItems(materiels)
-    )}</td>
-  </tr>
+      <table style="border-collapse: collapse; width: 100%">
+        <tr style="background-color: #f2f2f2">
+          <td style="padding: 8px; border: 1px solid #ddd">
+            <strong>Détails de la réservation :</strong>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd">
+            <strong>Matériels : </strong>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd; display: flex; gap : 16px;  text-align: center"> ${render(
+            renderItems(materiels)
+          )}</td>
+        </tr>
 
-  <tr>
-    <td style="padding: 8px; border: 1px solid #ddd">
-      <strong>Objet :</strong> ${objet}
-    </td>
-  </tr>
-  <tr>
-    <td style="padding: 8px; border: 1px solid #ddd">
-      <strong>Lieu :</strong> ${lieu}
-    </td>
-  </tr>
-  <tr>
-    <td style="padding: 8px; border: 1px solid #ddd">
-      <strong>Début :</strong> ${formatDateString(debut)}
-    </td>
-  </tr>
-  <tr>
-    <td style="padding: 8px; border: 1px solid #ddd">
-      <strong>Fin :</strong> ${formatDateString(fin)}
-    </td>
-  </tr>
-</table>
-<p style="color: #333">Cordialement.</p>
-`;
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd">
+            <strong>Objet :</strong> ${objet}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd">
+            <strong>Lieu :</strong> ${lieu}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd">
+            <strong>Début :</strong> ${formatDateString(debut)}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd">
+            <strong>Fin :</strong> ${formatDateString(fin)}
+          </td>
+        </tr>
+      </table>
+      <p style="color: #333">Cordialement.</p>
+      `;
 
     const emailAdminContent = `
 <p style="color: #333;text-transform: capitalize;">Bonjour,</p>

@@ -1,57 +1,62 @@
 import prisma from "@/lib/db";
+import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  try {
-    const { id, image, email } = await request.json();
+  const { userId } = auth();
+  if (userId) {
+    try {
+      const { id, image, email } = await request.json();
 
-    // Validation des données d'entrée
-    if (!id || !email) {
-      return NextResponse.error("Invalid request");
-    }
-
-    const userExists = await prisma.user.findUnique({
-      where: { idclerk: id },
-    });
-    const emailExists = await prisma.user.findUnique({
-      where: { email },
-    });
-    let userfind;
-    if (!userExists) {
-      let role = "User";
-
-      // Vérification d'un utilisateur super administrateur
-      if (email === process.env.SUPER_ADMIN) {
-        role = "SuperAdmin";
+      // Validation des données d'entrée
+      if (!id || !email) {
+        return NextResponse.error("Invalid request");
       }
-      if (emailExists) {
-        userfind = await prisma.user.update({
-          where: { email },
-          data: {
-            idclerk: id,
-            image: image,
-            email: email,
-            role: role,
-          },
-        });
-      } else {
-        userfind = await prisma.user.create({
-          data: {
-            idclerk: id,
-            image: image,
-            email: email,
-            role: role,
-          },
-        });
+
+      const userExists = await prisma.user.findUnique({
+        where: { idclerk: id },
+      });
+      const emailExists = await prisma.user.findUnique({
+        where: { email },
+      });
+      let userfind;
+      if (!userExists) {
+        let role = "User";
+
+        // Vérification d'un utilisateur super administrateur
+        if (email === process.env.SUPER_ADMIN) {
+          role = "SuperAdmin";
+        }
+        if (emailExists) {
+          userfind = await prisma.user.update({
+            where: { email },
+            data: {
+              idclerk: id,
+              image: image,
+              email: email,
+              role: role,
+            },
+          });
+        } else {
+          userfind = await prisma.user.create({
+            data: {
+              idclerk: id,
+              image: image,
+              email: email,
+              role: role,
+            },
+          });
+        }
+        // Création sécurisée de l'utilisateur
+
+        return NextResponse.json({ userfind });
       }
-      // Création sécurisée de l'utilisateur
 
-      return NextResponse.json({ userfind });
+      return NextResponse.error("User already exists");
+    } catch (err) {
+      console.error(err);
+      return NextResponse.error("Internal server error");
     }
-
-    return NextResponse.error("User already exists");
-  } catch (err) {
-    console.error(err);
-    return NextResponse.error("Internal server error");
   }
+  return new NextResponse("Unauthorized", { status: 401 });
 }

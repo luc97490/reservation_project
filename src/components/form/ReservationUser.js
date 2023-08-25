@@ -47,7 +47,7 @@ export default function ReservationUser() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    window.my_modal_1.showModal();
     const selectedMaterials = Object.entries(checkboxValues)
       .filter(([_, checked]) => checked)
       .map(([material]) => material);
@@ -115,18 +115,20 @@ export default function ReservationUser() {
             userId,
           })
           .then(function (response) {
-            //
+            window.my_modal_1.close();
+            window.my_modal.showModal();
           });
       } catch (e) {
         console.error(e);
       }
     } else setvideMateriels(true);
   };
-  useEffect(() => {}, []);
 
   return (
     <div className="p-6 px-40">
-      <h1 className="text-center font-bold mb-6">Réservation Matériel</h1>
+      <h1 className="text-center text-xl text-gray-900 dark:text-white font-bold mb-6">
+        Réservation Matériel
+      </h1>
       <form onSubmit={handleSubmit} className="text-center">
         <div className="mb-6">
           <label
@@ -145,39 +147,6 @@ export default function ReservationUser() {
           />
         </div>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
-          <div>
-            <label
-              htmlFor="first_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Prénom *
-            </label>
-            <input
-              type="text"
-              id="first_name"
-              name="prenom"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Joe"
-              required
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="last_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Nom *
-            </label>
-            <input
-              type="text"
-              id="last_name"
-              name="nom"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Doe"
-              required
-            />
-          </div>
-
           <div>
             <label
               htmlFor="objet"
@@ -281,7 +250,7 @@ export default function ReservationUser() {
               />
               <label
                 htmlFor="pc"
-                className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:bg-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:bg-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-800 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 "
               >
                 <div className="flex flex-col items-center">
                   <span className=" w-12 h-12">
@@ -500,7 +469,9 @@ export default function ReservationUser() {
           </ul>
         </div>
         <div className="text-start">
-          <p>* Assurez-vous de compléter tous les champs obligatoires</p>
+          <p className="text-gray-900 dark:text-white">
+            * Assurez-vous de compléter tous les champs obligatoires
+          </p>
         </div>
         <button
           type="submit"
@@ -509,6 +480,37 @@ export default function ReservationUser() {
           Envoyer
         </button>
       </form>
+      <dialog id="my_modal_1" className="modal text-center">
+        <form
+          method="dialog"
+          className="modal-box bg-transparent shadow-none  "
+        >
+          <h3 className="font-bold text-black dark:text-white text-3xl">
+            En cours d'envoi
+          </h3>
+          <p className="py-4">
+            <span className="loading text-black dark:text-white loading-dots loading-lg"></span>
+          </p>
+        </form>
+      </dialog>
+
+      <dialog id="my_modal" className="modal text-center">
+        <form
+          method="dialog"
+          className="modal-box bg-transparent shadow-none  "
+        >
+          <h3 className="font-bold text-black dark:text-white text-3xl">
+            Demande bien reçu !{" "}
+          </h3>
+
+          <div className="modal-action justify-center">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn dark:bg-white dark:text-black">
+              D'accord
+            </button>
+          </div>
+        </form>
+      </dialog>
     </div>
   );
 }
