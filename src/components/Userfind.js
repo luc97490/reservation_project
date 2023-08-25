@@ -2,7 +2,8 @@
 
 export default function Userfind({ finduser }) {
   if (finduser) {
-    if (localStorage) localStorage.setItem("role", finduser.userfind.role);
+    if (typeof window !== "undefined" && finduser)
+      localStorage.setItem("role", finduser.userfind.role);
   }
 
   return null;

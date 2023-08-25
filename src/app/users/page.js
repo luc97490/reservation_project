@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function page() {
   const [users, setUsers] = useState([]);
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState();
 
   useEffect(() => {
     setRefresh(false);
@@ -22,7 +22,8 @@ export default function page() {
     };
     fetchData();
   }, [refresh]);
-  function updateRole(data) {
+  async function updateRole(data) {
+    window.my_modal_1.showModal();
     const id = data.get("id")?.valueOf();
     let role = "";
 
@@ -32,14 +33,15 @@ export default function page() {
       role = "User";
     }
 
-    axios
+    await axios
       .put("/api/users/updateRole", {
         // idSuperAdmin: idSuperAdmin,
         id: id,
         role: role,
       })
-      .then(async (response) => {
+      .then(async () => {
         setRefresh(true);
+        window.my_modal_1.close();
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);
@@ -131,6 +133,19 @@ export default function page() {
           ))}
         </tbody>
       </table>
+      <dialog id="my_modal_1" className="modal text-center">
+        <form
+          method="dialog"
+          className="modal-box bg-transparent shadow-none  "
+        >
+          <h3 className="font-bold text-black dark:text-white text-3xl">
+            En cours
+          </h3>
+          <p className="py-4">
+            <span className="loading text-black dark:text-white loading-dots loading-lg"></span>
+          </p>
+        </form>
+      </dialog>
     </div>
   );
 }

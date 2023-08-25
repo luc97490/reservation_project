@@ -8,7 +8,9 @@ const smtpOptions = {
     pass: process.env.SMTP_PASSWORD || "password",
   },
   tls: {
-    rejectUnauthorized: false,
+    checkServerIdentity: function (host, cert) {
+      return undefined;
+    },
   },
 };
 

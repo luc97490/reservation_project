@@ -47,11 +47,12 @@ export default function ReservationUser() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    window.my_modal_1.showModal();
+
     const selectedMaterials = Object.entries(checkboxValues)
       .filter(([_, checked]) => checked)
       .map(([material]) => material);
     if (selectedMaterials.length > 0) {
+      window.my_modal_1.showModal();
       const email = new FormData(event.target).get("email");
       const objet = new FormData(event.target).get("objet");
       const lieu = new FormData(event.target).get("lieu");
