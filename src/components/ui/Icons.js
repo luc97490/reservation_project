@@ -1,12 +1,10 @@
 export function IconDemande() {
   return (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 64.000000 64.000000"
-      fill="currentColor"
-    >
-      <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)">
+    <svg width="30" height="30" viewBox="0 0 64.000000 64.000000">
+      <g
+        transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+        className="  border-black dark:fill-white"
+      >
         <path
           d="M100 560 c0 -38 2 -40 30 -40 28 0 30 2 30 40 0 38 -2 40 -30 40 -28
    0 -30 -2 -30 -40z"
@@ -81,7 +79,7 @@ export function IconEnCours() {
     >
       <g
         transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
-        fill="currentColor"
+        className="  border-black dark:fill-white"
         stroke="none"
       >
         <path
@@ -145,7 +143,7 @@ export function IconRendu() {
     >
       <g
         transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
-        fill="currentColor"
+        className="  border-black dark:fill-white"
         stroke="none"
       >
         <path

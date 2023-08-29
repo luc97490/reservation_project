@@ -14,14 +14,14 @@ export default function Navbar({ isButtonClicked }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 z-40 ${mlNav} w-[fill-available] rounded-t-xl h-20 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700`}
+      className={`fixed top-0 left-0 z-40 ${mlNav} w-[fill-available] rounded-t-xl h-20 border bg-secondary-light border-b border-border-light dark:bg-secondary-dark dark:border-border-dark`}
     >
       <div className=" flex items-center justify-between gap-10 mx-auto py-4 px-10">
         {["Admin", "SuperAdmin"].includes(role) ? <MenuAdmin /> : <MenuUser />}
 
         <div className="flex items-center gap-5">
           <Flowbite>
-            <DarkThemeToggle className=" border-2 border-base-200" />
+            <DarkThemeToggle />
           </Flowbite>
           <IsLoginIn />
         </div>

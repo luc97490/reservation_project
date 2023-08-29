@@ -24,10 +24,10 @@ export default function SidebarAdmin({ isButtonClicked }) {
     <>
       <aside
         id="logo-sidebar"
-        className={`fixed top-0  left-0 z-40 ${wSide} overflow-hidden  h-screen rounded-2xl border bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+        className={`fixed top-0  left-0 z-40 ${wSide} overflow-hidden  h-screen rounded-2xl border bg-primary-light  border-border-light sm:translate-x-0 dark:bg-primary-dark dark:border-border-dark`}
         aria-label="Sidebar"
       >
-        <div className={`h-full px-3 pb-4 `}>
+        <div className={`h-full pb-4 `}>
           <ul className="space-y-2 font-medium">
             <li>
               <Link href="/" className="w-full">

@@ -4,10 +4,13 @@ export default function Logo() {
       width="40"
       height="40"
       viewBox="0 0 40 40"
-      className=" fill-black dark:fill-white"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g id="reservation-en-ligne 1" clipPath="url(#clip0_5_63)">
+      <g
+        id="reservation-en-ligne 1"
+        clipPath="url(#clip0_5_63) "
+        className=" fill-black dark:fill-white"
+      >
         <g id="Group">
           <path
             id="Vector"

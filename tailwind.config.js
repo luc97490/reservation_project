@@ -19,6 +19,32 @@ module.exports = {
         273: "273px",
         288: "288px",
       },
+      colors: {
+        primary: {
+          light: "#FFFFFF",
+          dark: "#161A23",
+        },
+        secondary: {
+          light: "#FAFAFA",
+          dark: "#2D2F39",
+        },
+        border: {
+          light: "#D9D9D9",
+          dark: "#5C5E64",
+        },
+        text: {
+          light: "#667085",
+          dark: "#FAFAFA",
+        },
+        icon: {
+          light: "#5C5E64",
+          dark: "#757575",
+        },
+        check: {
+          light: "#0070FF",
+          dark: "#757575",
+        },
+      },
     },
   },
   plugins: [require("flowbite/plugin"), require("daisyui")],
