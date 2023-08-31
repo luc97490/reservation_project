@@ -100,6 +100,25 @@ export default function ModalUpdatePermanente({ attribution, setRefresh }) {
                   handleDataChange(`idmateriel`, e.value),
                     handleDataChange(`materiels`, e.label);
                 }}
+                classNames={{
+                  menuButton: ({ isDisabled }) =>
+                    `flex text-sm text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
+                      isDisabled
+                        ? "bg-gray-200"
+                        : "dark:bg-gray-700  bg-white hover:border-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-500/20"
+                    }`,
+
+                  menu: "absolute z-10 w-full dark:bg-gray-700 bg-white shadow-lg   rounded-lg  py-1 mt-1.5 text-sm text-gray-700",
+                  list: " dark:text-white",
+                  listItem: ({ isSelected }) =>
+                    `block transition duration-200 px-2 py-2 dark:text-white cursor-pointer select-none truncate rounded ${
+                      isSelected
+                        ? `text-white bg-blue-500`
+                        : `text-gray-500 hover:bg-blue-100 hover:text-blue-500 dark:hover:bg-secondary-dark hover:text-blue-500`
+                    }`,
+                  searchBox:
+                    "w-full text-center dark:text-white dark:bg-primary-dark",
+                }}
               />
             </div>
             <div>

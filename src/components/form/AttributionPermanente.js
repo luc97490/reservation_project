@@ -58,7 +58,7 @@ export default function AttributionPermanente() {
   }, []);
   return (
     <div className="p-6 px-40">
-      <h1 className="text-center font-bold mb-6">
+      <h1 className="text-center font-bold mb-6 text-black dark:text-white">
         Attribution Matériel Permanente
       </h1>
       <form onSubmit={handleSubmit} className="text-center">
@@ -99,13 +99,13 @@ export default function AttributionPermanente() {
 
         <div className="mb-6">
           <label
-            htmlFor="materiel"
+            htmlFor="materielss"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Matériel
           </label>
           <Select
-            id="materiel"
+            id="materielss"
             isSearchable={true}
             placeholder={dataMateriel[`materiel`] || ""}
             options={materiel}
@@ -116,7 +116,7 @@ export default function AttributionPermanente() {
           />
         </div>
 
-        <div className="text-start">
+        <div className="text-start bg-black">
           <p>* Assurez-vous de compléter tous les champs obligatoires</p>
         </div>
         <button

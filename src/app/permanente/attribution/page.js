@@ -59,7 +59,7 @@ export default function AttributionPermanente() {
   }, []);
   return (
     <div className="p-6 px-40">
-      <h1 className="text-center font-bold mb-6">
+      <h1 className="text-center font-bold mb-6 text-black dark:text-white">
         Attribution Matériel Permanente
       </h1>
       <form onSubmit={handleSubmit} className="text-center">
@@ -114,15 +114,34 @@ export default function AttributionPermanente() {
               handleDataChange(`id`, e.value),
                 handleDataChange(`materiel`, e.label);
             }}
+            classNames={{
+              menuButton: ({ isDisabled }) =>
+                `flex text-sm text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
+                  isDisabled
+                    ? "bg-gray-200"
+                    : "dark:bg-gray-700  bg-white hover:border-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-500/20"
+                }`,
+
+              menu: "absolute z-10 w-full dark:bg-gray-700 bg-white shadow-lg   rounded-lg  py-1 mt-1.5 text-sm text-gray-700",
+              list: " dark:text-white",
+              listItem: ({ isSelected }) =>
+                `block transition duration-200 px-2 py-2 dark:text-white cursor-pointer select-none truncate rounded ${
+                  isSelected
+                    ? `text-white bg-blue-500`
+                    : `text-gray-500 hover:bg-blue-100 hover:text-blue-500 dark:hover:bg-secondary-dark hover:text-blue-500`
+                }`,
+              searchBox:
+                "w-full text-center dark:text-white dark:bg-primary-dark",
+            }}
           />
         </div>
 
-        <div className="text-start">
+        <div className="text-start text-black dark:text-white">
           <p>* Assurez-vous de compléter tous les champs obligatoires</p>
         </div>
         <button
           type="submit"
-          className="mt-6 px-10 py-3  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="mt-6 px-10 py-3  text-white bg-primary-dark hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Envoyer
         </button>

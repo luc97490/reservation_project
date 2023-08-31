@@ -7,6 +7,8 @@ export default function IsLoginInButton() {
         <UserButton
           afterSignOutUrl="/"
           afterMultiSessionSingleSignOutUrl="/"
+          userProfileMode="navigation"
+          userProfileUrl="/user-profile"
           appearance={{
             elements: {
               formButtonPrimary:
@@ -14,6 +16,10 @@ export default function IsLoginInButton() {
               userButtonPopoverFooter: "hidden",
               avatarBox: "w-14 h-14 ",
               userButtonTrigger: "mx-12",
+              userButtonPopoverCard: "dark:bg-secondary-dark dark:text-white",
+              userPreviewSecondaryIdentifier: "dark:text-white",
+              userButtonPopoverActionButtonIcon: "dark:text-white",
+              userButtonPopoverActionButtonText: "dark:text-white",
             },
           }}
         />

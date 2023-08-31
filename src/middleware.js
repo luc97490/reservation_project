@@ -44,8 +44,7 @@ function getRequiredRole(pathname) {
     pathname.startsWith("/materiels")
   ) {
     return ["Admin", "SuperAdmin"];
-  }
-  if (pathname.startsWith("/users")) {
+  } else if (pathname.startsWith("/user")) {
     return ["Admin", "User", "SuperAdmin"];
   } else {
     return ["User"];
