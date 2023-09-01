@@ -14,7 +14,11 @@ export default function ModalDeleteMateriel({ materiel, setRefresh }) {
   }
   return (
     <dialog id={`delete${materiel.id}`} className="modal">
-      <form className="modal-box" method="dialog" onSubmit={deleteMateriel}>
+      <form
+        className="modal-box bg-white dark:bg-primary-dark"
+        method="dialog"
+        onSubmit={deleteMateriel}
+      >
         <button
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
           type="button"

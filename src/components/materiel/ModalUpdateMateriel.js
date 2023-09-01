@@ -42,14 +42,18 @@ export default function ModalUpdateMateriel({ materiel, setRefresh, modeles }) {
   return (
     <>
       <button
-        className="btn  btn-xs "
+        className="btn  btn-xs bg-primary-dark dark:bg-primary-light dark:text-black"
         onClick={() => window[`update${materiel.id}`].showModal()}
       >
         Modifier
       </button>
 
       <dialog id={`update${materiel.id}`} className="modal">
-        <form method="dialog" className="modal-box" onSubmit={updateMateriel}>
+        <form
+          method="dialog"
+          className="modal-box bg-white dark:bg-primary-dark"
+          onSubmit={updateMateriel}
+        >
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             type="button"
@@ -170,13 +174,13 @@ export default function ModalUpdateMateriel({ materiel, setRefresh, modeles }) {
           </div>
           <div className="flex justify-between mt-4">
             <button
-              className="btn "
+              className="btn bg-primary-dark dark:bg-primary-light dark:text-black "
               onClick={() => window[`delete${materiel.id}`].showModal()}
             >
               Supprimer
             </button>
             <button
-              className="btn "
+              className="btn bg-primary-dark dark:bg-primary-light dark:text-black"
               type="submit"
               onClick={() => window[`update${materiel.id}`].close()}
             >

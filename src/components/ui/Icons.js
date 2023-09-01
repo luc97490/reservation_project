@@ -702,3 +702,29 @@ export function IconHome() {
     </svg>
   );
 }
+export function IconModel() {
+  return (
+    <svg
+      version="1.0"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      fill="currentColor"
+      viewBox="0 0 100.000000 100.000000"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g
+        transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+        stroke="none"
+      >
+        <path
+          d="M640 947 c-19 -6 -58 -34 -86 -62 -61 -60 -80 -117 -70 -202 l7 -57
+   -226 -226 c-238 -239 -241 -244 -213 -305 7 -15 24 -33 39 -41 63 -32 68 -29
+   309 211 l226 225 60 -6 c88 -9 151 14 207 76 62 69 82 153 56 229 l-12 33 -78
+   -78 -79 -78 -42 14 c-37 13 -45 21 -58 58 l-14 42 78 79 78 78 -33 12 c-39 13
+   -102 13 -149 -2z"
+        />
+      </g>
+    </svg>
+  );
+}

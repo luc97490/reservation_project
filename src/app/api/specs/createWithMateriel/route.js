@@ -17,7 +17,6 @@ export async function POST(request) {
     });
     return NextResponse.json({ createdSpecsWithMateriel });
   } catch (err) {
-    console.error("Error creating specs:", err);
-    return NextResponse.error("Failed to create specs");
+    return NextResponse.json({ message: "fail" });
   }
 }

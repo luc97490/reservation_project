@@ -47,14 +47,17 @@ export default function ModalCreateMateriel({ type, setRefresh }) {
   }
   return (
     <>
-      <button className="btn " onClick={() => window.addmateriel.showModal()}>
+      <button
+        className="btn bg-primary-dark dark:bg-primary-light dark:text-black"
+        onClick={() => window.addmateriel.showModal()}
+      >
         + Ajouter {type}
       </button>
 
       <dialog id="addmateriel" className="modal">
         <form
           action={createMateriel}
-          className="modal-box px-0 pb-0 overflow-hidden"
+          className="modal-box bg-white dark:bg-primary-dark px-0 pb-0 overflow-hidden"
         >
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -147,7 +150,7 @@ export default function ModalCreateMateriel({ type, setRefresh }) {
           </div>
 
           <button
-            className="w-full h-7 mt-2 bg-gray-900 hover:bg-slate-200"
+            className="w-full h-7 mt-2  hover:bg-slate-200 dark:hover:bg-secondary-dark bg-primary-dark dark:bg-primary-light dark:text-black"
             type="submit"
             onClick={() => window.addmateriel.close()}
           >

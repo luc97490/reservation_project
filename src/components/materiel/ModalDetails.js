@@ -11,7 +11,7 @@ export default function ModalDetails({ spec }) {
       </button>
 
       <dialog id={`details${spec.id}`} className="modal">
-        <div className="modal-box">
+        <div className="modal-box bg-white dark:bg-primary-dark  text-black dark:text-white">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             type="button"
@@ -22,15 +22,15 @@ export default function ModalDetails({ spec }) {
           <span className="text-lg font-bold">
             Les materiels associés au modèle : {spec.modele}
           </span>
-          <table className="table-normal w-full">
+          <table className="table-normal text-center  mt-4 w-full">
             <tbody>
               {spec.materiels.map((materiel) => (
-                <tr key={materiel.id}>
-                  <td className="w-1/2">{materiel.nom}</td>
+                <tr className="h-8" key={materiel.id}>
+                  <td className="w-1/2 ">{materiel.nom}</td>
 
-                  <td className="flex items-center w-1/2">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2" />
-                    {materiel.etat}
+                  <td className=" p-2 flex items-center gap-3 ">
+                    <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
+                    <span>{materiel.etat}</span>
                   </td>
                 </tr>
               ))}
