@@ -1,5 +1,5 @@
 "use client";
-import DropdownFilter from "@/components/ui/DropdownFilter";
+
 import { IconSearch } from "@/components/ui/Icons";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,7 +7,18 @@ import axios from "axios";
 export default function page() {
   const [users, setUsers] = useState([]);
   const [refresh, setRefresh] = useState();
+  const [searchUser, setSearchUser] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState(users);
 
+  const handleSearchChange = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    setSearchUser(searchTerm);
+    const filtered = users.filter((user) =>
+      user.email.toLowerCase().includes(searchTerm)
+    );
+
+    setFilteredUsers(filtered);
+  };
   useEffect(() => {
     setRefresh(false);
 
@@ -51,8 +62,6 @@ export default function page() {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <div className="flex items-center justify-between px-2 py-4 bg-white dark:bg-gray-800">
-        <DropdownFilter />
-
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <IconSearch />
@@ -60,7 +69,9 @@ export default function page() {
           <input
             type="text"
             className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search for users"
+            placeholder="Rechercher l'utilisateur"
+            value={searchUser}
+            onChange={handleSearchChange}
           />
         </div>
       </div>
@@ -79,7 +90,7 @@ export default function page() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
             <tr
               key={user.id}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"

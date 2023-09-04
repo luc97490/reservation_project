@@ -2,7 +2,7 @@
 import ModalCreateModele from "@/components/materiel/ModalCreateModele";
 import ModalDetails from "@/components/materiel/ModalDetails";
 import ModalUpdateRow from "@/components/materiel/ModalUpdateRow";
-import DropdownFilter from "@/components/ui/DropdownFilter";
+
 import { IconSearch } from "@/components/ui/Icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -10,6 +10,21 @@ import { useEffect, useState } from "react";
 export default function page() {
   const [refresh, setRefresh] = useState();
   const [specs, setSpecs] = useState([]);
+  const [selectedType, setSelectedType] = useState("Tous");
+  const [searchModel, setSearchModel] = useState("");
+  const handleSelectChange = (event) => {
+    setSelectedType(event.target.value);
+  };
+  const handleSearchChange = (event) => {
+    setSearchModel(event.target.value);
+  };
+  const specsFiltres = specs.filter((spec) => {
+    const typeMatch = selectedType === "Tous" || spec.type === selectedType;
+    const modeleMatch = spec.modele
+      .toLowerCase()
+      .includes(searchModel.toLowerCase());
+    return typeMatch && modeleMatch;
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +43,22 @@ export default function page() {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <div className="flex items-center justify-between px-2 py-4 bg-white dark:bg-gray-800">
-        <DropdownFilter />
+        <select
+          name="type"
+          id="type"
+          value={selectedType}
+          onChange={handleSelectChange}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option value="Tous">Tous</option>
+          <option value="Ordinateur Portable">Ordinateur Portable</option>
+          <option value="Vidéo Projecteur">Vidéo Projecteur</option>
+          <option value="Haut-Parleur">Haut-Parleur</option>
+          <option value="Casque VR">Casque VR</option>
+          <option value="Visioconférence">Visioconférence</option>
+          <option value="Appareil Photo">Appareil Photo</option>
+          <option value="Casque Audio">Casque Audio</option>
+        </select>
         <div className="flex items-center gap-5">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -38,6 +68,8 @@ export default function page() {
               type="text"
               className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Recherche le modèle"
+              value={searchModel}
+              onChange={handleSearchChange}
             />
           </div>
           {/* Modal ADD*/}
@@ -65,7 +97,7 @@ export default function page() {
           </tr>
         </thead>
         <tbody>
-          {specs.map((spec) => (
+          {specsFiltres.map((spec) => (
             <tr
               key={spec.id}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
