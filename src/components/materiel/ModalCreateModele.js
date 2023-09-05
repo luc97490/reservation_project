@@ -67,7 +67,10 @@ export default function ModalCreateModele({ setRefresh }) {
         }
       })
       .catch((error) => {
-        console.error("Erreur lors de l'envoi de la requête POST :", error);
+        console.error(
+          "Erreur lors de l&apos;envoi de la requête POST :",
+          error
+        );
       });
   }
   return (
@@ -169,7 +172,7 @@ export default function ModalCreateModele({ setRefresh }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   >
                     <option disabled defaultValue="Disponible">
-                      L'état du matériel?
+                      L&apos;état du matériel?
                     </option>
                     <option value="Disponible">Disponible</option>
                     <option value="En réservation">En réservation</option>
@@ -189,8 +192,8 @@ export default function ModalCreateModele({ setRefresh }) {
           </div>
           <div className=" absolute bottom-0">
             <div className="text-xs text-center p-1 m-4 border">
-              Vous avez la possibilité d'associer directement le modèle à un (ou
-              plusieurs) matériels (en appuyant sur "+")
+              Vous avez la possibilité d&apos;associer directement le modèle à
+              un (ou plusieurs) matériels (en appuyant sur "+")
             </div>
             <div className="flex gap-16">
               <div className="w-1/3">

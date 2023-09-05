@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function page({ params: { idReservation } }) {
+export default function IdAttribution({ params: { idReservation } }) {
   const [filteredMateriels, setfilteredMateriels] = useState([]);
   const [dataMateriel, setdataMateriel] = useState({});
   const router = useRouter();

@@ -21,7 +21,7 @@ export default function ModalUpdateRow({ spec, setRefresh }) {
       setdataModele(dataModele);
       setRefreshmodal(false);
     }
-  }, [spec.modele, spec.type, refreshmodal]);
+  }, [spec.modele, spec.type, refreshmodal, spec]);
 
   function updateModele(data) {
     const id = data.get("id")?.valueOf();

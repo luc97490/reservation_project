@@ -40,7 +40,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
       const dataReservation = { id, objet, lieu, debut, fin, commentaire };
       setdataReservation(dataReservation);
     }
-  }, [reservation.objet, reservation.lieu, reservation.debut, reservation.fin]);
+  }, [reservation]);
   function handleUpdate() {
     const materiels = generateUpdatedString();
     const { id, objet, lieu, debut, fin, commentaire } = dataReservation;

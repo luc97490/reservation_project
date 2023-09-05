@@ -4,7 +4,8 @@ import RowMateriel from "@/components/materiel/RowMateriel";
 import { IconSearch } from "@/components/ui/Icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-export default function page() {
+
+export default function Ap() {
   const type = "Appareil Photo";
   const [refresh, setRefresh] = useState();
   const [materiels, setMateriels] = useState([]);

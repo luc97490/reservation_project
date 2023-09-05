@@ -3,7 +3,7 @@ import RowMateriel from "@/components/materiel/RowMateriel";
 import Table from "@/components/materiel/Table";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-export default function page() {
+export default function Casque() {
   const type = "Casque Audio";
   const [refresh, setRefresh] = useState();
   const [materiels, setMateriels] = useState([]);

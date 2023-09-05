@@ -61,7 +61,7 @@ export default function BoxType({ dataMateriel, setdataMateriel, nbs, type }) {
         });
     }
     getMateriel();
-  }, []);
+  }, [labels, nbs, type]);
   useEffect(() => {
     function renderSelects() {
       const selects = [];
@@ -102,7 +102,7 @@ export default function BoxType({ dataMateriel, setdataMateriel, nbs, type }) {
       setselect(selects);
     }
     renderSelects();
-  }, [nb, materiel, dataMateriel]);
+  }, [nb, materiel, dataMateriel, type, handleDataChange]);
 
   return (
     <div className="w-64">

@@ -7,7 +7,7 @@ import { IconSearch } from "@/components/ui/Icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function page() {
+export default function Materiel() {
   const [refresh, setRefresh] = useState();
   const [specs, setSpecs] = useState([]);
   const [selectedType, setSelectedType] = useState("Tous");

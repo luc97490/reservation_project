@@ -4,7 +4,7 @@ import { IconSearch } from "@/components/ui/Icons";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function page() {
+export default function UsersPage() {
   const [users, setUsers] = useState([]);
   const [refresh, setRefresh] = useState();
   const [searchUser, setSearchUser] = useState("");

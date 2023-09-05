@@ -10,7 +10,6 @@ import {
   IconVr,
 } from "@/components/ui/Icons";
 
-import RowDetailsAttribution from "./RowDetailsAttribution";
 import RowUsersDetailsAttribution from "./RowUsersDetailsAttribution";
 
 const renderItems = (inputString) => {

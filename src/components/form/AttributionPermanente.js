@@ -139,7 +139,7 @@ export default function AttributionPermanente() {
           className="modal-box bg-transparent shadow-none  "
         >
           <h3 className="font-bold text-black dark:text-white text-3xl">
-            En cours d'envoi
+            En cours d&apos;envoi
           </h3>
           <p className="py-4">
             <span className="loading text-black dark:text-white loading-dots loading-lg"></span>
@@ -159,7 +159,7 @@ export default function AttributionPermanente() {
           <div className="modal-action justify-center">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn dark:bg-white dark:text-black">
-              D'accord
+              D&apos;accord
             </button>
           </div>
         </form>
