@@ -16,15 +16,18 @@ export default authMiddleware({
       return NextResponse.redirect(url);
     }
     // Get ROLE
-    const searchUser = await fetch("http://localhost:3000/api/users/find", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idclerk: auth.userId,
-      }),
-    });
+    const searchUser = await fetch(
+      "https://reservation-project.vercel.app/api/users/find",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idclerk: auth.userId,
+        }),
+      }
+    );
 
     const finduser = await searchUser.json();
     const role = finduser.userfind.role;
