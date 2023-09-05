@@ -193,7 +193,7 @@ export default function ModalCreateModele({ setRefresh }) {
           <div className=" absolute bottom-0">
             <div className="text-xs text-center p-1 m-4 border">
               Vous avez la possibilité d&apos;associer directement le modèle à
-              un (ou plusieurs) matériels (en appuyant sur "+")
+              un (ou plusieurs) matériels (en appuyant sur &quot;+&quot;)
             </div>
             <div className="flex gap-16">
               <div className="w-1/3">
