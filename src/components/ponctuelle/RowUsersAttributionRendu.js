@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/Icons";
 
 import RowDetailsAttribution from "./RowDetailsAttribution";
+import RowUsersDetailsAttribution from "./RowUsersDetailsAttribution";
 
 const renderItems = (inputString) => {
   const items = inputString.split(", ");
@@ -36,7 +37,7 @@ const renderItems = (inputString) => {
   });
 };
 
-export default function RowAttributionRendu({
+export default function RowUsersAttributionRendu({
   reservation,
   rendu,
   setRefresh,
@@ -110,7 +111,7 @@ export default function RowAttributionRendu({
         </td>
         <td></td>
       </tr>
-      <RowDetailsAttribution
+      <RowUsersDetailsAttribution
         rendu={rendu}
         attributions={reservation.attribution}
         setRefresh={setRefresh}

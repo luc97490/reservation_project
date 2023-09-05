@@ -9,7 +9,9 @@ export default function page() {
   const [refresh, setRefresh] = useState();
   const [searchUser, setSearchUser] = useState("");
   const [filteredUsers, setFilteredUsers] = useState(users);
-
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchUser(searchTerm);

@@ -1,7 +1,13 @@
 import { IconSearch } from "../ui/Icons";
 import ModalCreateMateriel from "./ModalCreateMateriel";
 
-export default function Table({ children, type, setRefresh }) {
+export default function Table({
+  children,
+  type,
+  setRefresh,
+  handleSearchChange,
+  searchMateriel,
+}) {
   return (
     <div className=" overflow-x-auto shadow-md sm:rounded-lg">
       <div className="flex items-center justify-between px-2 py-4 bg-white dark:bg-gray-800">
@@ -12,7 +18,9 @@ export default function Table({ children, type, setRefresh }) {
           <input
             type="text"
             className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search for users"
+            placeholder="Recherche..."
+            value={searchMateriel}
+            onChange={handleSearchChange}
           />
         </div>
         <ModalCreateMateriel type={type} setRefresh={setRefresh} />

@@ -100,7 +100,7 @@ export default function ModalCreateMateriel({ type, setRefresh }) {
                 name="modele"
                 classNames={{
                   menuButton: ({ isDisabled }) =>
-                    `flex text-sm text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
+                    `flex text-sm text-gray-500 border rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
                       isDisabled
                         ? "bg-gray-200"
                         : "dark:bg-gray-700  bg-white hover:border-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-500/20"

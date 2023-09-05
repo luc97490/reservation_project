@@ -10,7 +10,21 @@ export default function Pc() {
   const [materiels, setMateriels] = useState([]);
 
   const [modeles, setModeles] = useState([]);
+  const [searchMateriel, setSearchMateriel] = useState("");
+  const [filteredMateriel, setFilteredMateriel] = useState(materiels);
+  useEffect(() => {
+    setFilteredMateriel(materiels);
+  }, [materiels]);
 
+  const handleSearchChange = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    setSearchMateriel(searchTerm);
+    const filtered = materiels.filter((materiel) =>
+      materiel.nom.toLowerCase().includes(searchTerm)
+    );
+
+    setFilteredMateriel(filtered);
+  };
   useEffect(() => {
     const fetchModeles = async () => {
       try {
@@ -49,8 +63,13 @@ export default function Pc() {
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <Table type={type} setRefresh={setRefresh}>
-        {materiels.map((materiel) => (
+      <Table
+        type={type}
+        setRefresh={setRefresh}
+        searchMateriel={searchMateriel}
+        handleSearchChange={handleSearchChange}
+      >
+        {filteredMateriel.map((materiel) => (
           <RowMateriel
             key={materiel.id}
             materiel={materiel}

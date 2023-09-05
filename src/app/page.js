@@ -1,4 +1,5 @@
 import Userfind from "@/components/Userfind";
+import ReservationNoLogin from "@/components/form/ReservationNoLogin";
 import ReservationUser from "@/components/form/ReservationUser";
 import { currentUser } from "@clerk/nextjs";
 
@@ -36,7 +37,11 @@ export default async function Home() {
   return (
     <div>
       <Userfind finduser={await finduser} />
-      <ReservationUser />
+      {user ? (
+        <ReservationUser email={user.emailAddresses[0].emailAddress} />
+      ) : (
+        <ReservationNoLogin />
+      )}
     </div>
   );
 }

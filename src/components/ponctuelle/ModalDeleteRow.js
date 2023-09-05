@@ -13,12 +13,15 @@ export default function ModalDeleteRow({ reservation, setRefresh }) {
   }
   return (
     <dialog id={`delete${reservation.id}`} className="modal">
-      <form action={deleteReservation} className="modal-box">
+      <form
+        action={deleteReservation}
+        className="modal-box  bg-white dark:bg-primary-dark  text-black dark:text-white"
+      >
         <input type="hidden" name="id" value={reservation.id} />
 
         <button
           type="button"
-          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 "
           onClick={() => window[`delete${reservation.id}`].close()}
         >
           ✕
@@ -31,7 +34,7 @@ export default function ModalDeleteRow({ reservation, setRefresh }) {
         <div className="modal-action">
           <button
             type="submit"
-            className="w-full font-bold text-lg rounded-lg bg-gray-900 hover:bg-slate-200"
+            className="w-full font-bold text-lg rounded-lg dark:bg-white bg-primary-dark  dark:text-black text-white "
           >
             Supprimer définitivement
           </button>

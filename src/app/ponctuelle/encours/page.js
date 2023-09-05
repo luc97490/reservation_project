@@ -64,4 +64,3 @@ export default function Encours() {
     </div>
   );
 }
-0;

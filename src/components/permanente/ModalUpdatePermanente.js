@@ -72,7 +72,7 @@ export default function ModalUpdatePermanente({ attribution, setRefresh }) {
         <form
           onSubmit={handleUpdate}
           method="dialog"
-          className="modal-box px-0 pb-0 overflow-hidden max-w-3xl"
+          className="modal-box bg-white dark:bg-primary-dark px-0 pb-0 overflow-hidden max-w-3xl"
         >
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -102,7 +102,7 @@ export default function ModalUpdatePermanente({ attribution, setRefresh }) {
                 }}
                 classNames={{
                   menuButton: ({ isDisabled }) =>
-                    `flex text-sm text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
+                    `flex text-sm border text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
                       isDisabled
                         ? "bg-gray-200"
                         : "dark:bg-gray-700  bg-white hover:border-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-500/20"
@@ -173,7 +173,7 @@ export default function ModalUpdatePermanente({ attribution, setRefresh }) {
           </div>
           <div className="flex justify-between w-full h-10 mt-10">
             <button
-              className="w-full text-center cursor-pointer bg-gray-700"
+              className="w-full rounded-tr-lg text-center cursor-pointer bg-secondary-dark dark:bg-secondary-light dark:text-black text-white"
               onClick={() => window[`delete${attribution.id}`].showModal()}
             >
               Supprimer{" "}
@@ -181,11 +181,14 @@ export default function ModalUpdatePermanente({ attribution, setRefresh }) {
 
             <button
               onClick={() => window[`rendre${attribution.id}`].showModal()}
-              className="w-full bg-white "
+              className="w-full rounded-t-lg bg-primary-light border-y border-t border-b-0 dark:bg-black dark:hover:bg-gray- hover:text-white  dark:border-primary-light hover:bg-blue-600 dark:text-white  "
             >
               Rendre
             </button>
-            <button type="submit" className="w-full  bg-gray-700 ">
+            <button
+              type="submit"
+              className="w-full rounded-tl-lg bg-secondary-dark dark:bg-secondary-light dark:text-black text-white"
+            >
               Modifier
             </button>
           </div>

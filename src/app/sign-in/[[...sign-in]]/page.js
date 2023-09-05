@@ -1,4 +1,4 @@
-import ReservationUser from "@/components/form/ReservationUser";
+import ReservationNoLogin from "@/components/form/ReservationNoLogin";
 import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
@@ -26,7 +26,7 @@ export default function Page() {
         <span className="mx-2 text-gray-500">OU</span>
         <div className="h-1 bg-gray-400 flex-grow"></div>
       </div>
-      <ReservationUser />
+      <ReservationNoLogin />
     </div>
   );
 }

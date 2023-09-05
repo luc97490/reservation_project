@@ -78,13 +78,13 @@ export default function BoxType({ dataMateriel, setdataMateriel, nbs, type }) {
             }}
             classNames={{
               menuButton: ({ isDisabled }) =>
-                `flex text-sm text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
+                `flex text-sm my-1 text-gray-500  rounded-lg shadow-sm transition-all dark:text-white text-black duration-300 focus:outline-none ${
                   isDisabled
                     ? "bg-gray-200"
                     : "dark:bg-gray-700  bg-white hover:border-gray-400 focus:border-blue-500 focus:ring focus:ring-blue-500/20"
                 }`,
 
-              menu: "absolute z-10 w-full dark:bg-gray-700 bg-white shadow-lg   rounded-lg  py-1 mt-1.5 text-sm text-gray-700",
+              menu: "absolute  z-10 w-full dark:bg-gray-700 bg-white shadow-lg   rounded-lg  py-1 mt-1.5 text-sm text-gray-700",
               list: " dark:text-white",
               listItem: ({ isSelected }) =>
                 `block transition duration-200 px-2 py-2 dark:text-white cursor-pointer select-none truncate rounded ${
@@ -105,7 +105,7 @@ export default function BoxType({ dataMateriel, setdataMateriel, nbs, type }) {
   }, [nb, materiel, dataMateriel]);
 
   return (
-    <div>
+    <div className="w-64">
       <label
         htmlFor="pc"
         className="inline-flex items-center justify-center w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:bg-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"

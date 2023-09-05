@@ -1,19 +1,21 @@
 "use client";
-import RowAttribution from "@/components/permanente/RowAttribution";
-
+import RowReservation from "@/components/ponctuelle/RowReservation";
+import RowUsersAttributionRendu from "@/components/ponctuelle/RowUsersAttributionRendu";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function Encours() {
-  const [attributions, setattributions] = useState([]);
+export default function Demande() {
+  const [reservations, setReservations] = useState([]);
   const [refresh, setRefresh] = useState();
   useEffect(() => {
     setRefresh(false);
     const fetchReservations = async () => {
       try {
-        await axios.get("/api/permanente/getEncours").then(function (response) {
-          setattributions(response.data.attribution);
-        });
+        await axios
+          .get("/api/reservation/getUsersAttribution")
+          .then(function (response) {
+            setReservations(response.data.reservations);
+          });
       } catch (error) {
         console.error("Une erreur s'est produite :", error);
       }
@@ -32,26 +34,29 @@ export default function Encours() {
               <div className="font-normal text-gray-500">email</div>
             </th>
             <th scope="col" className="px-6 py-3">
-              attribution
+              <div>attribution</div> <div>fin</div>
             </th>
             <th scope="col" className="px-6 py-3">
-              preparateur
+              <div>objet</div> <div>lieu</div>
             </th>
-
+            <th scope="col" className="px-6 py-3">
+              details
+            </th>
             <th scope="col" className="px-6 py-3">
               materiels
             </th>
             <th scope="col" className="px-6 py-3">
-              Action
+              Observations
             </th>
           </tr>
         </thead>
         <tbody>
-          {attributions.map((attribution) => (
-            <RowAttribution
-              key={attribution.id}
-              attribution={attribution}
+          {reservations.map((reservation) => (
+            <RowUsersAttributionRendu
+              key={reservation.id}
+              reservation={reservation}
               setRefresh={setRefresh}
+              rendu={false}
             />
           ))}
         </tbody>

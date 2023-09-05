@@ -7,8 +7,8 @@ export async function GET() {
   if (userId)
     try {
       const reservations = await prisma.reservationPonctuelle.findMany({
-        include: { user: true },
         where: {
+          user: { idclerk: userId },
           NOT: {
             attribution: {
               some: {
@@ -19,10 +19,11 @@ export async function GET() {
             },
           },
         },
+        include: { user: true },
       });
       return NextResponse.json({ reservations });
     } catch (err) {
-      console.error("Error fetching reservations:", err);
+      // console.error("Error fetching reservations:", err);
       return NextResponse.error("Failed to fetch reservations");
     }
 }

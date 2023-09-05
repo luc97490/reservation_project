@@ -13,17 +13,11 @@
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3); /* Couleur de la barre de défilement */
-  border-radius: 4px; /* Bordure arrondie */
+  @apply bg-gray-600 dark:bg-slate-300 rounded;
 }
 
 .scroll-container::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Couleur de la barre de défilement au survol */
+  @apply bg-gray-700 dark:bg-slate-400 /* Couleur de la barre de défilement au survol */;
 }
 
 .content {
@@ -40,4 +34,8 @@
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms !important;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  /* Changer la couleur de l'icône ici */
+  color: #ff0000 !important; /* Changez cette valeur en fonction de la couleur que vous souhaitez */
 }

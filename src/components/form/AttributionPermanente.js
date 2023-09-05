@@ -9,6 +9,7 @@ export default function AttributionPermanente() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    window.modal_encours.showModal();
     const email = new FormData(event.target).get("email");
     const preparateur = new FormData(event.target).get("preparateur");
     const idMaterielSelect = dataMateriel["id"];
@@ -21,7 +22,10 @@ export default function AttributionPermanente() {
           preparateur,
           materielId: idMaterielSelect,
         })
-        .then(async (response) => {});
+        .then(async (response) => {
+          window.modal_encours.close();
+          window.my_modal.showModal();
+        });
     } else {
       const newUser = await axios.post("/api/users/createG", {
         email,
@@ -32,7 +36,10 @@ export default function AttributionPermanente() {
           preparateur,
           materielId: idMaterielSelect,
         })
-        .then(async (response) => {});
+        .then(async (response) => {
+          window.modal_encours.close();
+          window.my_modal.showModal();
+        });
     }
   };
 
@@ -126,6 +133,37 @@ export default function AttributionPermanente() {
           Envoyer
         </button>
       </form>
+      <dialog id="modal_encours" className="modal text-center">
+        <form
+          method="dialog"
+          className="modal-box bg-transparent shadow-none  "
+        >
+          <h3 className="font-bold text-black dark:text-white text-3xl">
+            En cours d'envoi
+          </h3>
+          <p className="py-4">
+            <span className="loading text-black dark:text-white loading-dots loading-lg"></span>
+          </p>
+        </form>
+      </dialog>
+
+      <dialog id="my_modal" className="modal text-center">
+        <form
+          method="dialog"
+          className="modal-box bg-transparent shadow-none  "
+        >
+          <h3 className="font-bold text-black dark:text-white text-3xl">
+            Demande bien reçu !{" "}
+          </h3>
+
+          <div className="modal-action justify-center">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn dark:bg-white dark:text-black">
+              D'accord
+            </button>
+          </div>
+        </form>
+      </dialog>
     </div>
   );
 }

@@ -99,7 +99,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
         <form
           onSubmit={handleUpdate}
           method="dialog"
-          className="modal-box px-0 pb-0 overflow-hidden max-w-3xl"
+          className="modal-box bg-white dark:bg-primary-dark  px-0 pb-0 overflow-hidden max-w-3xl"
         >
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -386,7 +386,7 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
           </div>
           <div className="flex justify-between w-full h-10 mt-10">
             <button
-              className="w-full  bg-gray-700"
+              className="w-full  bg-secondary-dark rounded-tr-lg text-white dark:bg-secondary-light dark:text-black"
               onClick={() => window[`delete${reservation.id}`].showModal()}
             >
               Supprimer{" "}
@@ -394,11 +394,14 @@ export default function ModalUpdateRow({ reservation, setRefresh }) {
 
             <Link
               href={`/ponctuelle/demande/attribution/${reservation.id}`}
-              className="w-full flex justify-center items-center bg-white "
+              className="w-full rounded-t-lg flex justify-center items-center bg-primary-light border-y border-t border-b-0 dark:bg-black dark:hover:bg-gray- hover:text-white  dark:border-primary-light hover:bg-blue-600 dark:text-white "
             >
               Attribuer
             </Link>
-            <button type="submit" className="w-full  bg-gray-700 ">
+            <button
+              type="submit"
+              className="w-full rounded-tl-lg bg-secondary-dark dark:bg-secondary-light dark:text-black text-white "
+            >
               Modifier
             </button>
           </div>

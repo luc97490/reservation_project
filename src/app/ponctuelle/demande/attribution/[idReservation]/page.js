@@ -63,9 +63,14 @@ export default function page({ params: { idReservation } }) {
             />
           ))}
         </div>{" "}
-        <button className="btn" type="submit">
-          Attribuer
-        </button>
+        <div className="mt-6 text-center">
+          <button
+            className="btn w-56 bg-primary-dark dark:bg-primary-light dark:hover:bg-blue-500 text-white dark:text-black hover:bg-slate-600"
+            type="submit"
+          >
+            Attribuer
+          </button>
+        </div>
       </form>
     </>
   );
