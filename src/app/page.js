@@ -23,7 +23,7 @@ export default async function Home() {
 
     if (!finduser.userfind) {
       finduser = (
-        await fetch(` ${process.env.URLDEPLOYE}/api/users/find`, {
+        await fetch(` ${process.env.URLDEPLOYE}/api/users/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
