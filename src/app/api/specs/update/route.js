@@ -1,20 +1,24 @@
+import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function PUT(request) {
-  try {
-    const { id, type, modele } = await request.json();
-    console.log(type);
-    const updatedSpecs = await prisma.specification.update({
-      where: { id },
-      data: {
-        type: type,
-        modele: modele,
-      },
-    });
+  const { userId } = auth();
+  if (userId)
+    try {
+      const { id, type, modele } = await request.json();
+      console.log(type);
+      const updatedSpecs = await prisma.specification.update({
+        where: { id },
+        data: {
+          type: type,
+          modele: modele,
+        },
+      });
 
-    return NextResponse.json({ updatedSpecs });
-  } catch (err) {
-    console.error("Error updating specs:", err);
-    return NextResponse.error("Failed to update specs");
-  }
+      return NextResponse.json({ updatedSpecs });
+    } catch (err) {
+      console.error("Error updating specs:", err);
+      return NextResponse.error("Failed to update specs");
+    }
+  return new NextResponse("Unauthorized", { status: 401 });
 }

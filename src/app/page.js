@@ -8,7 +8,7 @@ export default async function Home() {
   let finduser;
   if (user) {
     const searchUser = await fetch(
-      "https://reservation-project.vercel.app/api/users/find",
+      ` ${process.env.URLDEPLOYE}/api/users/find`,
       {
         method: "POST",
         headers: {
@@ -23,7 +23,7 @@ export default async function Home() {
 
     if (!finduser.userfind) {
       finduser = (
-        await fetch("https://reservation-project.vercel.app/api/users/create", {
+        await fetch(` ${process.env.URLDEPLOYE}/api/users/find`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
