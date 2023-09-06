@@ -1,10 +1,9 @@
 "use client";
+import axios from "axios";
 import ModalCreateModele from "@/components/materiel/ModalCreateModele";
 import ModalDetails from "@/components/materiel/ModalDetails";
 import ModalUpdateRow from "@/components/materiel/ModalUpdateRow";
-
 import { IconSearch } from "@/components/ui/Icons";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Materiel() {
