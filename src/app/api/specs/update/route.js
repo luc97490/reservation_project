@@ -6,7 +6,6 @@ export async function PUT(request) {
   if (userId)
     try {
       const { id, type, modele } = await request.json();
-      console.log(type);
       const updatedSpecs = await prisma.specification.update({
         where: { id },
         data: {
