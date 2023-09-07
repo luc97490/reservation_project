@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import ModalDeleteModele from "./ModalDeleteModele";
 import { IconModel } from "../ui/Icons";
@@ -30,9 +30,9 @@ export default function ModalUpdateRow({ spec, setRefresh }) {
     const { modele, type } = dataModele;
     axios
       .put("/api/specs/update", {
-        id: id,
-        type: type,
-        modele: modele,
+        id,
+        type,
+        modele,
       })
       .then(async (response) => {
         setRefresh(true);
