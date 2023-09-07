@@ -24,42 +24,48 @@ export default function Demande() {
   }, [refresh]);
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="px-6 py-3">
-              <div>Nom</div>
-              <div className="font-normal text-gray-500">email</div>
-            </th>
-            <th scope="col" className="px-6 py-3">
-              <div>attribution</div> <div>fin</div>
-            </th>
-            <th scope="col" className="px-6 py-3">
-              <div>objet</div> <div>lieu</div>
-            </th>
-            <th scope="col" className="px-6 py-3">
-              details
-            </th>
-            <th scope="col" className="px-6 py-3">
-              materiels
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Etat
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {reservations.map((reservation) => (
-            <RowAttribution
-              key={reservation.id}
-              reservation={reservation}
-              setRefresh={setRefresh}
-              rendu={true}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className=" bg-secondary-light dark:bg-secondary-dark rounded-lg text-black dark:text-white">
+        <h1 className=" m-2 text-3xl">Réservation rendue</h1>
+        <p className="m-2">Visualiser les rendus de matériel...</p>
+      </div>
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                <div>Nom</div>
+                <div className="font-normal text-gray-500">email</div>
+              </th>
+              <th scope="col" className="px-6 py-3">
+                <div>attribution</div> <div>fin</div>
+              </th>
+              <th scope="col" className="px-6 py-3">
+                <div>objet</div> <div>lieu</div>
+              </th>
+              <th scope="col" className="px-6 py-3">
+                details
+              </th>
+              <th scope="col" className="px-6 py-3">
+                materiels
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Etat
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {reservations.map((reservation) => (
+              <RowAttribution
+                key={reservation.id}
+                reservation={reservation}
+                setRefresh={setRefresh}
+                rendu={true}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }

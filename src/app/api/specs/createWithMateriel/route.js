@@ -10,7 +10,6 @@ export async function POST(request) {
       if (!type || !modele || !materiels) {
         return NextResponse.error("Error json format");
       }
-      console.log(materiels);
       const createdSpecsWithMateriel = await prisma.specification.create({
         data: {
           type,

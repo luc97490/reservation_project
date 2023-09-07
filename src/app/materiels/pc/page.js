@@ -8,8 +8,8 @@ export default function Pc() {
   const type = "Ordinateur Portable";
   const [refresh, setRefresh] = useState();
   const [materiels, setMateriels] = useState([]);
-
   const [modeles, setModeles] = useState([]);
+
   const [searchMateriel, setSearchMateriel] = useState("");
   const [filteredMateriel, setFilteredMateriel] = useState(materiels);
   useEffect(() => {
@@ -25,6 +25,7 @@ export default function Pc() {
 
     setFilteredMateriel(filtered);
   };
+
   useEffect(() => {
     const fetchModeles = async () => {
       try {

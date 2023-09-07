@@ -7,8 +7,6 @@ export async function POST(request) {
   if (userId)
     try {
       const { materielReservation } = await request.json();
-      console.log(materielReservation);
-
       const createdAttribution = await prisma.attributionPonctuelle.createMany({
         data: materielReservation,
       });

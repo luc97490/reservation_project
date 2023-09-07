@@ -68,8 +68,8 @@ export async function POST(request) {
       },
     });
     const emailUserContent = `
-      <p style="color: #333;text-transform: capitalize;">Bonjour, 
-      ${email.split("@")[0].split(".")[1]}
+      <p style="color: #333;text-transform: capitalize;">Bonjour
+      ${email.split("@")[0].split(".")[1]}, 
       </p>
 
       <table style="border-collapse: collapse; width: 100%">
