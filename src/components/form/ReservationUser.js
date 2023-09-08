@@ -15,10 +15,10 @@ import NumberInputWithButtons from "./ui/NumberInputWithButtons";
 import axios from "axios";
 
 export default function ReservationUser({ email }) {
-  const [role, setrole] = useState(localStorage.getItem("role"));
+  const [role, setrole] = useState();
   useEffect(() => {
     setrole(localStorage.getItem("role"));
-  }, [localStorage.getItem("role")]);
+  }, []);
 
   const [checkboxValues, setCheckboxValues] = useState({
     pc: false,

@@ -53,10 +53,12 @@ export default function BoxType({ dataMateriel, setdataMateriel, nbs, type }) {
         })
         .then(async (response) => {
           setmateriel(
-            response.data.materiels.map(({ id, nom }) => ({
-              value: id,
-              label: nom,
-            }))
+            response.data.materiels
+              .filter(({ etat }) => etat === "Disponible")
+              .map(({ id, nom }) => ({
+                value: id,
+                label: nom,
+              }))
           );
         });
     }

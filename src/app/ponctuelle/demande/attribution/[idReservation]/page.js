@@ -34,9 +34,9 @@ export default function IdAttribution({ params: { idReservation } }) {
             id: idReservation,
           })
           .then(function (response) {
-            const materiel = response.data.reservations.materiels.split(", ");
+            const materiels = response.data.reservations.materiels.split(", ");
             setfilteredMateriels(
-              materiel.filter(
+              materiels.filter(
                 (m) =>
                   m.split(" ")[1] !== "rallonge" && m.split(" ")[1] !== "multi"
               )

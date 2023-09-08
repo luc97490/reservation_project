@@ -97,7 +97,11 @@ export default function RowAttributionRendu({
           <div className="font-bold line-clamp-1">
             {formatDateString(reservation.attribution[0].dateAsign)}
           </div>
-          <div>{formatDateString(reservation.fin)}</div>
+          {rendu ? (
+            <div>{formatDateString(reservation.attribution[0].dateRendu)}</div>
+          ) : (
+            <div>{formatDateString(reservation.fin)}</div>
+          )}
         </td>
 
         <td className="px-2 py-2">

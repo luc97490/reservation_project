@@ -7,6 +7,7 @@ import axios from "axios";
 export default function UsersPage() {
   const [users, setUsers] = useState([]);
   const [refresh, setRefresh] = useState();
+
   const [searchUser, setSearchUser] = useState("");
   const [filteredUsers, setFilteredUsers] = useState(users);
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function UsersPage() {
 
     setFilteredUsers(filtered);
   };
+
   useEffect(() => {
     setRefresh(false);
 

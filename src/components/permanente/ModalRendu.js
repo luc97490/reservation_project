@@ -15,7 +15,10 @@ export default function ModalRendu({ attribution, setRefresh }) {
   }
   return (
     <dialog id={`rendre${attribution.id}`} className="modal">
-      <form action={rendreAttributionPermanente} className="modal-box">
+      <form
+        action={rendreAttributionPermanente}
+        className="modal-box bg-white dark:bg-primary-dark  text-black dark:text-white"
+      >
         <input type="hidden" name="id" value={attribution.id} />
         <h3 className="font-bold text-lg">Observation</h3>
         <textarea
@@ -33,7 +36,7 @@ export default function ModalRendu({ attribution, setRefresh }) {
         <div className="modal-action">
           <button
             type="submit"
-            className="w-full font-bold text-lg rounded-lg bg-gray-900 hover:bg-slate-200"
+            className="w-full font-bold text-lg rounded-lg dark:bg-white bg-primary-dark  dark:text-black text-white"
           >
             Rendre
           </button>
