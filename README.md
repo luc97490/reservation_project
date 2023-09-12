@@ -9,26 +9,11 @@ npm i
 
 ```
 
-After, add file .env :
+After, add file .env
 
-DATABASE_URL="mysql://[root]:[password]@[localhost]/[nameBDD]"
+or
 
-SUPER_ADMIN ="[email]
-
-SMTP_HOST="[host server mail]"
-SMTP_PORT="[port]"
-SMTP_USER="[user or mail]"
-SMTP_PASSWORD="[password]"
-SMTP_FROM_EMAIL="[mail]"
-URLDEPLOYE="[http://localhost:3000]"
-
-#Clerk
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+update file env.example and rename to .env
 
 run prisma migrate :
 
@@ -50,9 +35,13 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Prisma
+
 You can learn more about Prisma [here](https://www.prisma.io/docs)
-or / and  
-about Clerk [here](https://clerk.com/docs/quickstarts/nextjs)
+
+## Clerk
+
+You can learn more about Clerk [here](https://clerk.com/docs/quickstarts/nextjs)
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
