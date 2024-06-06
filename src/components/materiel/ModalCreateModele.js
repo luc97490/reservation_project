@@ -140,57 +140,61 @@ export default function ModalCreateModele({ setRefresh }) {
                 </select>
               </div>
             </div>
-            {noms.map((value, index) => (
-              <div key={index} className=" flex mt-2 ml-7 justify-between">
-                <div className="border-l-4 pl-2">
-                  <label
-                    htmlFor={index}
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Nom
-                  </label>
-                  <input
-                    value={value}
-                    onChange={(event) => handleNomChange(index, event)}
-                    type="text"
-                    id={index}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Nom"
-                    required
-                  />
+            <div>
+              {noms.map((value, index) => (
+                <div key={index} className=" flex mt-2 ml-7 justify-between">
+                  <div className="border-l-4 pl-2">
+                    <label
+                      htmlFor={index}
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Nom
+                    </label>
+                    <input
+                      value={value}
+                      onChange={(event) => handleNomChange(index, event)}
+                      type="text"
+                      id={index}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Nom"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="etat"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      État actuel
+                    </label>
+                    <select
+                      id="etat"
+                      onChange={(event) => handleEtatChange(index, event)}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    >
+                      <option disabled defaultValue="Disponible">
+                        L&apos;état du matériel?
+                      </option>
+                      <option value="Disponible">Disponible</option>
+                      <option value="En réservation">En réservation</option>
+                      <option value="En prêt">En prêt</option>
+                      <option value="En réparation">En réparation</option>
+                      <option value="Dégât modéré">Dégât modéré</option>
+                      <option value="Dégât important">Dégât important</option>
+                      <option value="Indisponible">Indisponible</option>
+                      <option value="Hors service">Hors service</option>
+                      <option value="Retiré du service">
+                        Retiré du service
+                      </option>
+                      <option value="Introuvable">Introuvable</option>
+                      <option value="Volé">Volé</option>
+                    </select>
+                  </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="etat"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    État actuel
-                  </label>
-                  <select
-                    id="etat"
-                    onChange={(event) => handleEtatChange(index, event)}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  >
-                    <option disabled defaultValue="Disponible">
-                      L&apos;état du matériel?
-                    </option>
-                    <option value="Disponible">Disponible</option>
-                    <option value="En réservation">En réservation</option>
-                    <option value="En prêt">En prêt</option>
-                    <option value="En réparation">En réparation</option>
-                    <option value="Dégât modéré">Dégât modéré</option>
-                    <option value="Dégât important">Dégât important</option>
-                    <option value="Indisponible">Indisponible</option>
-                    <option value="Hors service">Hors service</option>
-                    <option value="Retiré du service">Retiré du service</option>
-                    <option value="Introuvable">Introuvable</option>
-                    <option value="Volé">Volé</option>
-                  </select>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <div className=" absolute bottom-0">
+          <div className={noms.length <= 5 ? " absolute bottom-0" : "bottom-0"}>
             <div className="text-xs text-center p-1 m-4 border">
               Vous avez la possibilité d&apos;associer directement le modèle à
               un (ou plusieurs) matériels (en appuyant sur &quot;+&quot;)
@@ -200,7 +204,7 @@ export default function ModalCreateModele({ setRefresh }) {
                 <button
                   type="button"
                   className={
-                    noms.length < 5
+                    noms.length < 100
                       ? "w-full rounded-lg  dark:bg-white bg-primary-dark text-xm dark:text-black text-white hover:bg-secondary-dark dark:hover:bg-slate-200"
                       : "w-full rounded-lg   bg-gray-500 btn-disabled text-xm"
                   }

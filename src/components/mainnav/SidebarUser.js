@@ -31,7 +31,7 @@ export default function SidebarUser({ isButtonClicked }) {
               <Link href="/" className="w-full">
                 <div className="logo h-20 w-full border-b border-border-light dark:border-border-dark rounded-t-2xl h-19 bg-secondary-light dark:bg-secondary-dark flex gap-5 flex-row flex-wrap items-center justify-center">
                   <Logo />
-                  <span className={hiddenText}>MIO - RESERVATION</span>
+                  <span className={hiddenText}>Réservation - Matériel</span>
                 </div>
               </Link>
             </li>
@@ -65,24 +65,10 @@ export default function SidebarUser({ isButtonClicked }) {
                 </span>
               </Link>
             </li>
+
             <li>
               <Link
-                href="https://mio.re:2096/"
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
-              >
-                <span className=" w-8 h-8">
-                  <IconMail />{" "}
-                </span>
-                <span
-                  className={`flex-1 text-sm whitespace-nowrap ml-3 ${hiddenText}`}
-                >
-                  Webmail
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://mio.eurecia.com/eurecia"
+                href="https://www.eurecia.com/"
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ${centerIcon}`}
               >
                 <span className=" w-8 h-8">

@@ -9,7 +9,7 @@ export default function MenuAdmin() {
     >
       <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 bg-none md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
         <li>
-          <Link href="/">Réserver</Link>
+          <Link href="/reserver">Réserver</Link>
         </li>
         <li>
           <Link href="/materiels">Matériels</Link>

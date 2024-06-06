@@ -7,6 +7,9 @@ export default function ModalDeleteMateriel({ materiel, setRefresh }) {
       .post("/api/materiels/delete", { id })
       .then(async (response) => {
         setRefresh(true);
+        if (response.data.message === "error") {
+          window.modalMessageDelete.showModal();
+        }
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la requête POST :", error);

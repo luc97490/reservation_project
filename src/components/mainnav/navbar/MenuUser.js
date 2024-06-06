@@ -8,7 +8,7 @@ export default function MenuUser() {
     >
       <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-none">
         <li>
-          <Link href="/">Reserver</Link>
+          <Link href="/reserver">Reserver</Link>
         </li>
         <li>
           <Link href="/mes-reservations">Mes demandes</Link>

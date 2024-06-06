@@ -6,12 +6,15 @@ import React, { useEffect, useState } from "react";
 export default function Demande() {
   const [reservations, setReservations] = useState([]);
   const [refresh, setRefresh] = useState();
+
   useEffect(() => {
     setRefresh(false);
     const fetchReservations = async () => {
       try {
         await axios
-          .get("/api/reservation/getUsersRes")
+          .post("/api/reservation/getUsersRes", {
+            id: localStorage.getItem("id"),
+          })
           .then(function (response) {
             setReservations(response.data.reservations);
           });

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "react-tailwindcss-select";
 import ModalDeleteMateriel from "./ModalDeleteMateriel";
+import { AlertModelDelete } from "../alert/AlertModel";
 
 export default function ModalUpdateMateriel({ materiel, setRefresh, modeles }) {
   const [dataMateriel, setdataMateriel] = useState({});
@@ -170,7 +171,8 @@ export default function ModalUpdateMateriel({ materiel, setRefresh, modeles }) {
             </button>
           </div>
         </form>
-        <ModalDeleteMateriel materiel={materiel} setRefresh={setRefresh} />
+        <ModalDeleteMateriel materiel={materiel} setRefresh={setRefresh} />*
+        <AlertModelDelete />
       </dialog>
     </>
   );

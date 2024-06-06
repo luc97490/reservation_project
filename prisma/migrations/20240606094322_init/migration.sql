@@ -62,12 +62,11 @@ CREATE TABLE `AttributionPermanente` (
 -- CreateTable
 CREATE TABLE `User` (
     `id` VARCHAR(191) NOT NULL,
-    `idclerk` VARCHAR(191) NULL,
+    `code` VARCHAR(191) NOT NULL,
     `email` VARCHAR(191) NOT NULL,
     `role` ENUM('SuperAdmin', 'Admin', 'User', 'Guest') NOT NULL DEFAULT 'Guest',
     `image` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `User_idclerk_key`(`idclerk`),
     UNIQUE INDEX `User_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

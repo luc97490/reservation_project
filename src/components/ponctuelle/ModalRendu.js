@@ -1,8 +1,6 @@
 import axios from "axios";
-import { redirect, useRouter } from "next/navigation";
 
 export default function ModalRendu({ attribution, setRefresh }) {
-  const router = useRouter();
   function updatedAttribution(data) {
     const remarque = data.get("commentaire")?.valueOf();
     const etat = data.get("etat")?.valueOf();

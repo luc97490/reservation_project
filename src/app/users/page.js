@@ -3,13 +3,15 @@
 import { IconSearch } from "@/components/ui/Icons";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useRouter } from "next/navigation";
 export default function UsersPage() {
+  const router = useRouter();
   const [users, setUsers] = useState([]);
   const [refresh, setRefresh] = useState();
 
   const [searchUser, setSearchUser] = useState("");
   const [filteredUsers, setFilteredUsers] = useState(users);
+
   useEffect(() => {
     setFilteredUsers(users);
   }, [users]);
@@ -24,18 +26,21 @@ export default function UsersPage() {
   };
 
   useEffect(() => {
-    setRefresh(false);
-
-    const fetchData = async () => {
-      try {
-        await axios.get("/api/users/getAll").then(function (response) {
-          setUsers(response.data.users);
-        });
-      } catch (error) {
-        console.error("Une erreur s'est produite :", error);
-      }
-    };
-    fetchData();
+    if (localStorage.getItem("role") === "SuperAdmin") {
+      setRefresh(false);
+      const fetchData = async () => {
+        try {
+          await axios.get("/api/users/getAll").then(function (response) {
+            setUsers(response.data.users);
+          });
+        } catch (error) {
+          console.error("Une erreur s'est produite :", error);
+        }
+      };
+      fetchData();
+    } else {
+      router.push("/");
+    }
   }, [refresh]);
   async function updateRole(data) {
     window.my_modal_1.showModal();

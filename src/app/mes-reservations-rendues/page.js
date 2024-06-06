@@ -11,7 +11,9 @@ export default function Demande() {
     const fetchReservations = async () => {
       try {
         await axios
-          .get("/api/reservation/getUsersRendu")
+          .post("/api/reservation/getUsersRendu", {
+            id: localStorage.getItem("id"),
+          })
           .then(function (response) {
             setReservations(response.data.reservations);
           });

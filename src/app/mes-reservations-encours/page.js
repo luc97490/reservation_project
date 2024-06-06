@@ -1,5 +1,4 @@
 "use client";
-import RowReservation from "@/components/ponctuelle/RowReservation";
 import RowUsersAttributionRendu from "@/components/ponctuelle/RowUsersAttributionRendu";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -12,7 +11,9 @@ export default function Demande() {
     const fetchReservations = async () => {
       try {
         await axios
-          .get("/api/reservation/getUsersAttribution")
+          .post("/api/reservation/getUsersAttribution", {
+            id: localStorage.getItem("id"),
+          })
           .then(function (response) {
             setReservations(response.data.reservations);
           });
