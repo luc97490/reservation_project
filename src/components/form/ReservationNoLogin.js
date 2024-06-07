@@ -13,8 +13,16 @@ import {
 } from "../ui/Icons";
 import NumberInputWithButtons from "./ui/NumberInputWithButtons";
 import axios from "axios";
+import { useRouter } from 'next/navigation';
 
 export default function ReservationNoLogin() {
+  const router = useRouter();
+  const handleConfirm = () => {
+    // Actualiser la page
+    window.location.reload();
+
+   
+  };
   const [checkboxValues, setCheckboxValues] = useState({
     pc: false,
     vp: false,
@@ -70,7 +78,8 @@ export default function ReservationNoLogin() {
         await axios
           .post("/api/users/createG", { email })
           .then(function (response) {
-            userId = response.data.user.id;
+            
+            userId = response.data.id;
           });
       }
 
@@ -119,6 +128,7 @@ export default function ReservationNoLogin() {
             window.my_modal_1.close();
             window.my_modal.showModal();
           });
+
       } catch (e) {
         console.error(e);
       }
@@ -506,7 +516,7 @@ export default function ReservationNoLogin() {
 
           <div className="modal-action justify-center">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn dark:bg-white dark:text-black">
+            <button onClick={handleConfirm} className="btn dark:bg-white dark:text-black">
               D&apos;accord
             </button>
           </div>

@@ -13,13 +13,13 @@ export async function POST(request) {
       where: { email },
     });
     if (!userExists) {
-      await prisma.user.create({
+      const newUser = await prisma.user.create({
         data: {
           email: email,
         },
       });
 
-      return NextResponse.json({ message: "User created" });
+      return NextResponse.json({ id: newUser.id });
     }
     return NextResponse.json({ message: "User exist" });
   } catch (err) {
