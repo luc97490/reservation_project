@@ -94,7 +94,7 @@ export default function Login() {
           </p>
           <p className="text-right mt-2">
             <Link href="sign-up" className="text-blue-500">
-              <span>S'inscrire</span>
+              <span>S&apos;inscrire</span>
             </Link>
           </p>
         </div>

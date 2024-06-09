@@ -22,5 +22,4 @@ export async function GET() {
     console.error("Error fetching reservations:", err);
     return NextResponse.error("Failed to fetch reservations");
   }
-  return new NextResponse("Unauthorized", { status: 401 });
 }

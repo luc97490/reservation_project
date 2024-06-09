@@ -95,8 +95,8 @@ export function AlertModelConnect() {
           <ul className="list-disc ml-4">
             <li>
               {" "}
-              Les informations d'identification fournies ne sont pas valides.
-              (Vérifier l'adresse mail ou le mot de passe)
+              Les informations d&apos;identification fournies ne sont pas valides.
+              (Vérifier l&apos;adresse mail ou le mot de passe)
             </li>
             <li>Problème d&apos;accès à internet.</li>
             <li>Problème de navigateur.</li>
@@ -162,7 +162,7 @@ export function AlertModelErrorMail() {
         className="modal-box bg-white dark:bg-primary-dark text-black dark:text-white"
       >
         <h3 className="font-bold text-red-700 text-lg">Attention !</h3>
-        <p className="my-3">Compte n'existe pas !</p>
+        <p className="my-3">Compte n&apos;existe pas !</p>
         <div
           className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
           role="alert"
@@ -171,10 +171,10 @@ export function AlertModelErrorMail() {
           <ul className="list-disc ml-4">
             <li>
               Vérifier votre adresse mail (sans{" "}
-              <span className="font-bold">'@mio.re'</span>)
+              <span className="font-bold">&apos;@mio.re&apos;</span>)
             </li>
-            <li>Que vous êtes bien inscrit sur l'application</li>
-            <li>Problème d'internet.</li>
+            <li>Que vous êtes bien inscrit sur l&apos;application</li>
+            <li>Problème d&apos;internet.</li>
           </ul>
         </div>
         <p className="my-3">

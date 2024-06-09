@@ -39,6 +39,12 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   /* Changer la couleur de l'icône ici */
   color: #ff0000 !important; /* Changez cette valeur en fonction de la couleur que vous souhaitez */
 }
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Change color by inverting it */
+}
+input[type="datetime-local"]::-moz-datetime-local-field {
+  color: red; /* Change color */
+}
 .credits {
   display: none;
 }

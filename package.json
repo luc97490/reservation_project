@@ -12,7 +12,7 @@
   "dependencies": {
     "@clerk/localizations": "^1.22.0",
     "@clerk/themes": "^1.7.5",
-    "@prisma/client": "^5.1.1",
+    "@prisma/client": "^5.15.0",
     "@react-email/container": "0.0.8",
     "@react-email/html": "0.0.4",
     "@react-email/section": "0.0.9",
@@ -39,6 +39,6 @@
   "devDependencies": {
     "@types/nodemailer": "^6.4.9",
     "daisyui": "^3.5.1",
-    "prisma": "^5.1.1"
+    "prisma": "^5.15.0"
   }
 }
