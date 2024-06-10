@@ -78,7 +78,7 @@ export default function ModalCreateModele({ setRefresh }) {
       <AlertModelDelete />
       <AlertModelUpdate />
       <button
-        className="btn bg-primary-dark dark:bg-primary-light dark:text-black"
+        className="btn bg-primary-dark text-white dark:bg-primary-light dark:text-black"
         onClick={() => window.addmodele.showModal()}
       >
         + Ajouter Modèle

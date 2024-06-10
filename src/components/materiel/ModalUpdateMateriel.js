@@ -43,7 +43,7 @@ export default function ModalUpdateMateriel({ materiel, setRefresh, modeles }) {
   return (
     <>
       <button
-        className="btn  btn-xs bg-primary-dark dark:bg-primary-light dark:text-black"
+        className="btn text-white btn-xs bg-primary-dark dark:bg-primary-light dark:text-black"
         onClick={() => window[`update${materiel.id}`].showModal()}
       >
         Modifier

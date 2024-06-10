@@ -31,7 +31,7 @@ export default function SidebarUser({ isButtonClicked }) {
               <Link href="/" className="w-full">
                 <div className="logo h-20 w-full border-b border-border-light dark:border-border-dark rounded-t-2xl h-19 bg-secondary-light dark:bg-secondary-dark flex gap-5 flex-row flex-wrap items-center justify-center">
                   <Logo />
-                  <span className={hiddenText}>Réservation - Matériel</span>
+                  <span className={`text-black dark:text-white ${hiddenText}`}>Réservation - Matériel</span>
                 </div>
               </Link>
             </li>

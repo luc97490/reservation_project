@@ -175,7 +175,7 @@ export async function POST(request) {
       html: emailUserContent,
     });
     await sendEmail({
-      to: "randriamahefa.pascal@mio.re",
+      to: "informatique@mio.re",
       subject: `Réservation : ${objet} - ${lieu} - ${
         email.split("@")[0].split(".")[0]
       } ${email.split("@")[0].split(".")[1]}`,

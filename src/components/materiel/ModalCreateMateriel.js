@@ -48,7 +48,7 @@ export default function ModalCreateMateriel({ type, setRefresh }) {
   return (
     <>
       <button
-        className="btn bg-primary-dark dark:bg-primary-light dark:text-black"
+        className="btn text-white bg-primary-dark dark:bg-primary-light dark:text-black"
         onClick={() => window.addmateriel.showModal()}
       >
         + Ajouter {type}
